@@ -1,0 +1,49 @@
+.disabled {
+  opacity: 0.6;
+}
+
+a {
+  color: black;
+}
+
+.container {
+  height: 100px;
+}
+
+
+.trophy {
+  padding: 0px;
+  text-align: center;
+
+  &_stats {
+    min-width: 150px;
+  }
+
+
+  &_img {
+    stroke: black;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    font-size: 35px;
+
+
+    &_platinum {
+      color: #e5e4e2;
+      stroke-width: 20px;
+    }
+
+    &_gold {
+      color: gold;
+      stroke-width: 15px;
+    }
+
+    &_silver {
+      color: silver;
+      stroke-width: 10px;
+    }
+
+    &_bronze {
+      color: #cd7f32;
+      stroke-width: 5px;
+    }
+  }
+}

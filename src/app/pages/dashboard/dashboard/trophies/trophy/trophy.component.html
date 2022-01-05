@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row" [ngClass]="{'disabled': runs.length === 0}">
+    <div class="col-2 trophy">
+      <fa-icon class="trophy_img" [icon]="icon"
+      [ngClass]="{
+        'trophy_img_platinum': distanceType === distanceTypeEnum.Marathon,
+        'trophy_img_gold': distanceType === distanceTypeEnum.SemiMarathon,
+        'trophy_img_silver': distanceType === distanceTypeEnum.TenKilometer,
+        'trophy_img_bronze': distanceType === distanceTypeEnum.FiveKilometer
+      }" ></fa-icon><br/>
+      <span class="badge rounded-pill bg-dark">{{runs.length}}x</span>
+    </div>
+    <div class="col trophy_stats">
+      <h3> {{title}}</h3>
+      <p *ngIf="runs.length > 0 && mostRecentRun && avgSpeed">
+        Avg: {{avgSpeed | speed}}<br/>
+        Last run <a [href]="'https://www.strava.com/activities/' + mostRecentRun.stravaId">{{mostRecentRun.start_date_local | dateTimeDiff}}</a>.
+      </p>
+      <p *ngIf="runs.length === 0">Not yet achieved.</p>
+    </div>
+  </div>
+</div>
