@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt, faRunning, faTachometerAlt, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { DistanceType } from 'src/app/services/strava/models/custom/enum/distance-type';
 import { Run } from 'src/app/services/strava/models/custom/run';
 
@@ -44,9 +44,7 @@ export class TrophyComponent {
     this._runs = value;
 
     this.mostRecentRun = value.sort((a, b) => b.startTime.getTime() - a.startTime.getTime())[0];
-
-    const sum = value.map(r => r.average_speed).reduce((a, b) => a + b, 0);
-    this.avgSpeed = (sum / value.length) || 0;
+    this.fastestRun = value.sort((a, b) => b.average_speed- a.average_speed)[0];
   }
   public get runs(): Run[] {
     return this._runs;
@@ -55,8 +53,10 @@ export class TrophyComponent {
   public distanceTypeEnum = DistanceType;
 
   public mostRecentRun: Run | undefined;
-  public avgSpeed: number | undefined;
+  public fastestRun: Run | undefined;
   public title: string = '';
 
-  public icon = faTrophy;
+  public trophyIcon = faTrophy;
+  public calendarIcon = faCalendarAlt;
+  public speedIcon = faTachometerAlt;
 }

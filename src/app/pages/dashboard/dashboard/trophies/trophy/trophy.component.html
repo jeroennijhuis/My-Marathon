@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" [ngClass]="{'disabled': runs.length === 0}">
     <div class="col-2 trophy">
-      <fa-icon class="trophy_img" [icon]="icon"
+      <fa-icon class="trophy_img" [icon]="trophyIcon"
       [ngClass]="{
         'trophy_img_platinum': distanceType === distanceTypeEnum.Marathon,
         'trophy_img_gold': distanceType === distanceTypeEnum.SemiMarathon,
@@ -12,10 +12,10 @@
     </div>
     <div class="col trophy_stats">
       <h3> {{title}}</h3>
-      <p *ngIf="runs.length > 0 && mostRecentRun && avgSpeed">
-        Avg: {{avgSpeed | speed}}<br/>
-        Last run <a [href]="'https://www.strava.com/activities/' + mostRecentRun.stravaId">{{mostRecentRun.endtime | dateTimeDiff}}</a>.
-      </p>
+        <ng-container *ngIf="runs.length > 0 && mostRecentRun && fastestRun">
+          <fa-icon class="stats-icon" [icon]="speedIcon"></fa-icon> <span><a [href]="'https://www.strava.com/activities/' + fastestRun.stravaId"  target="_blank" rel="noreferrer noopener">{{fastestRun?.average_speed | speed}}</a></span><br/>
+          <fa-icon class="stats-icon" [icon]="calendarIcon"></fa-icon> <span><a [href]="'https://www.strava.com/activities/' + mostRecentRun.stravaId"  target="_blank" rel="noreferrer noopener">{{mostRecentRun.endtime | dateTimeDiff}}</a></span>
+        </ng-container>
       <p *ngIf="runs.length === 0">Not yet achieved.</p>
     </div>
   </div>

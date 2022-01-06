@@ -16,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TrophyComponent } from './pages/dashboard/dashboard/trophies/trophy/trophy.component';
 import { TimePipe } from './pipes/time.pipe';
 import { SpeedPipe } from './pipes/speed.pipe';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { SpeedPipe } from './pipes/speed.pipe';
     TrophyComponent,
     DateTimeDiffPipe,
     TimePipe,
-    SpeedPipe
+    SpeedPipe,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +38,7 @@ import { SpeedPipe } from './pipes/speed.pipe';
   providers: [
     AuthService,
     TokenService,
+    DecimalPipe,
     StravaService,
     {
       provide: HTTP_INTERCEPTORS,

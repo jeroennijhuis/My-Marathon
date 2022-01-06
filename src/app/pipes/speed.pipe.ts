@@ -1,3 +1,4 @@
+import { DecimalPipe, formatNumber } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DistanceConstants } from '../constants/distance.contstants';
 
@@ -5,6 +6,9 @@ import { DistanceConstants } from '../constants/distance.contstants';
   name: 'speed'
 })
 export class SpeedPipe implements PipeTransform {
+
+  constructor(private decimalPipe: DecimalPipe) {
+  }
 
   transform(speed: any, _args?: any): any {
     switch (typeof speed) {
@@ -14,8 +18,11 @@ export class SpeedPipe implements PipeTransform {
           return '';
     }
 
-    const kmh = speed /*m/s*/ * 3.6;
+    const minPerKm = 16.6666667 / speed;
 
-    return `${kmh.toFixed(1)} km/h`;
+    const minutes = Math.floor(minPerKm);
+    const seconds = Math.floor((minPerKm - minutes) * 60);
+
+    return `${minutes}:${this.decimalPipe.transform(seconds, '2.0')} min/km`;
   }
 }
