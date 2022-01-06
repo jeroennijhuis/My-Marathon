@@ -14,7 +14,7 @@
       <h3> {{title}}</h3>
       <p *ngIf="runs.length > 0 && mostRecentRun && avgSpeed">
         Avg: {{avgSpeed | speed}}<br/>
-        Last run <a [href]="'https://www.strava.com/activities/' + mostRecentRun.stravaId">{{mostRecentRun.start_date_local | dateTimeDiff}}</a>.
+        Last run <a [href]="'https://www.strava.com/activities/' + mostRecentRun.stravaId">{{mostRecentRun.endtime | dateTimeDiff}}</a>.
       </p>
       <p *ngIf="runs.length === 0">Not yet achieved.</p>
     </div>

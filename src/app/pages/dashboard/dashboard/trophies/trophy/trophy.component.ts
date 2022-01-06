@@ -43,7 +43,7 @@ export class TrophyComponent {
   @Input() public set runs(value: Run[]) {
     this._runs = value;
 
-    this.mostRecentRun = value.sort((a, b) => b.start_date_local.getTime() - a.start_date_local.getTime())[0];
+    this.mostRecentRun = value.sort((a, b) => b.startTime.getTime() - a.startTime.getTime())[0];
 
     const sum = value.map(r => r.average_speed).reduce((a, b) => a + b, 0);
     this.avgSpeed = (sum / value.length) || 0;

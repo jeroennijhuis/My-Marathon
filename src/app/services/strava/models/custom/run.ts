@@ -12,9 +12,9 @@ export class Run {
     this.distance = activity.distance;
     this.elevation = activity.total_elevation_gain;
 
-    this.time = activity.moving_time;
-
-    this.start_date_local = new Date(activity.start_date_local);
+    this.startTime = new Date(activity.start_date);
+    this.movingtime = activity.moving_time;
+    this.endtime = new Date(this.startTime.getTime() + (this.movingtime * 1000));
 
     this.kudos_count = activity.kudos_count;
     this.comment_count = activity.comment_count;
@@ -33,10 +33,9 @@ export class Run {
   public elevation: number;
 
   // Time (s)
-  public time: number;
-
-  // The time at which the activity was started.
-  public start_date_local: Date;
+  public startTime: Date;
+  public movingtime: number; // s
+  public endtime: Date;
 
   // Social
   public kudos_count: number;

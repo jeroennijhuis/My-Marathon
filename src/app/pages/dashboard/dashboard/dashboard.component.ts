@@ -22,7 +22,7 @@ export class DashboardComponent {
       this.totalRuns = runs.length;
       this.totalDistance = runs.reduce((sum, current) => sum + (current.distance ?? 0), 0);
       this.totalKudos = runs.reduce((sum, current) => sum + (current.kudos_count ?? 0), 0);
-      this.totalTimeSpent = runs.reduce((sum, current) => sum + (current.time ?? 0), 0);
+      this.totalTimeSpent = runs.reduce((sum, current) => sum + (current.movingtime ?? 0), 0);
     });
   }
 }

@@ -30,7 +30,7 @@ export class DateTimeDiffPipe implements PipeTransform {
       formats.set('year',   TimeConstants.year);
       formats.set('',       Number.MAX_SAFE_INTEGER);
 
-      const diffInSeconds = (+new Date() - time) / 1000;
+      let diffInSeconds = (+new Date() - time) / 1000;
 
       let prevKey: string | null = null;
       let prevValue: number  | null = null;
