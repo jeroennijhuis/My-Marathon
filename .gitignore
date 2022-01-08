@@ -1,46 +1,51 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
-/out-tsc
+client/dist
+client/tmp
+client/out-tsc
 # Only exists if Bazel was run
-/bazel-out
+client/bazel-out
 
 # dependencies
-/node_modules
+client/node_modules
 
 # profiling files
-chrome-profiler-events*.json
+client/chrome-profiler-events*.json
 
 # IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+client/.idea
+client/.project
+client/.classpath
+client/.c9/
+client/*.launch
+client/.settings/
+client/*.sublime-workspace
 
 # IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+client/.vscode/*
+client/!.vscode/settings.json
+client/!.vscode/tasks.json
+client/!.vscode/launch.json
+client/!.vscode/extensions.json
+client/.history/*
 
 # misc
-/.angular/cache
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+client/.angular/cache
+client/.sass-cache
+client/connect.lock
+client/coverage
+client/libpeerconnection.log
+client/npm-debug.log
+client/yarn-error.log
+client/testem.log
+client/typings
 
 # System Files
 .DS_Store
-Thumbs.db
+client/Thumbs.db
+
+.vs/
+bin/
+obj/
+*.user
