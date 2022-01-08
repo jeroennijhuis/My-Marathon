@@ -33,8 +33,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common.Strava\Lambda.Strava.csproj" />
-    <ProjectReference Include="..\Common.ApiGateway\ApiGateway.Models.csproj" />
+    <ProjectReference Include="..\ApiGateway.Models\ApiGateway.Models.csproj" />
+    <ProjectReference Include="..\Lambda.Strava\Lambda.Strava.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="appsettings.json">

@@ -13,7 +13,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Strava.Api\Lambda.Functions.AccessToken.csproj" />
+    <ProjectReference Include="..\..\src\Lambda.Functions.AccessToken\Lambda.Functions.AccessToken.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="appsettings.json">
