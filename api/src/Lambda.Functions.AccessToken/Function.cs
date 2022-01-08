@@ -50,7 +50,7 @@ public class Function
 
             task.Wait();
 
-            context.Logger.LogError("Succesfully retrieved access token.");
+            context.Logger.LogInformation("Succesfully retrieved access token.");
 
             var response = new OkResponse<AccessTokenResponse>(task.Result);
             return response;

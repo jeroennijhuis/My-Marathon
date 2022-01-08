@@ -10,8 +10,6 @@ import { TokenService } from 'src/app/services/token/token.service';
 })
 export class LoginComponent {
 
-  private readonly nrOfFootprints = 7;
-  public nrOfFootprintsArray = new Array(this.nrOfFootprints);
   public isLoading: boolean = false;
 
   public constructor(tokenService: TokenService, private authService: AuthService, router: Router, route: ActivatedRoute) {
@@ -28,9 +26,6 @@ export class LoginComponent {
 
       this.authService.getAccessToken(code).subscribe(_ => router.navigate([`/dashboard`]));
     }
-
-    // TODO QUERY PARAMS ON TOKEN
-    // this.router.navigate([], {queryParams: {antwoordnummer: null, bedrijfsnaam: null, postcode: null}, queryParamsHandling: '', replaceUrl: true});
   }
 
   public login(): void {

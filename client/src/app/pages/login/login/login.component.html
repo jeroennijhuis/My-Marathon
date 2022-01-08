@@ -2,13 +2,16 @@
   <div class="background">
 </div>
 
-  <div class="lds-facebook">
+<div *ngIf="!isLoading; else loadingtemplate" class="container">
+  <input type="image" (click)="login()" src="../../../../assets/img/strava_connect.png" />
+</div>
+
+<ng-template #loadingtemplate>
+  <div *ngIf="isLoading" class="lds-facebook">
     <div></div>
     <div></div>
     <div></div>
   </div>
-	<!-- <div *ngIf="!isLoading" class="container">
-    <input type="image" (click)="login()" src="./../../../../assets/img/strava_connect.png" />
-</div> -->
+</ng-template>
 
 
