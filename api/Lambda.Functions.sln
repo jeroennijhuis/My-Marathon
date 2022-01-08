@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambda.Functions.AccessToken", "src\Strava.Api\Lambda.Functions.AccessToken.csproj", "{12CE734E-F999-49EF-994D-1C040BE423C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambda.Functions.AccessToken.Tests", "test\Strava.Api.Tests\Lambda.Functions.AccessToken.Tests.csproj", "{3330E8CA-BF69-42CA-B452-5FC60BD3733A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway.Models", "src\Common.ApiGateway\ApiGateway.Models.csproj", "{656EF23C-744E-4A90-8E64-8FD2A729D6AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda.Strava", "Common.Strava\Lambda.Strava.csproj", "{9A26AFC3-E7A3-4BBC-A3FB-EF0DEFD97B39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12CE734E-F999-49EF-994D-1C040BE423C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12CE734E-F999-49EF-994D-1C040BE423C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12CE734E-F999-49EF-994D-1C040BE423C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12CE734E-F999-49EF-994D-1C040BE423C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3330E8CA-BF69-42CA-B452-5FC60BD3733A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3330E8CA-BF69-42CA-B452-5FC60BD3733A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3330E8CA-BF69-42CA-B452-5FC60BD3733A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3330E8CA-BF69-42CA-B452-5FC60BD3733A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{656EF23C-744E-4A90-8E64-8FD2A729D6AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656EF23C-744E-4A90-8E64-8FD2A729D6AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656EF23C-744E-4A90-8E64-8FD2A729D6AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656EF23C-744E-4A90-8E64-8FD2A729D6AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A26AFC3-E7A3-4BBC-A3FB-EF0DEFD97B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A26AFC3-E7A3-4BBC-A3FB-EF0DEFD97B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A26AFC3-E7A3-4BBC-A3FB-EF0DEFD97B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A26AFC3-E7A3-4BBC-A3FB-EF0DEFD97B39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6C4CC98-A1BD-44F6-B0F0-5FC9AEC04046}
+	EndGlobalSection
+EndGlobal

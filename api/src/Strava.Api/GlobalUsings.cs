@@ -1,0 +1,13 @@
+﻿global using Amazon.Lambda.Core;
+global using Amazon.Lambda.RuntimeSupport;
+global using Amazon.Lambda.Serialization.SystemTextJson;
+global using ApiGateway.Models.Extensions;
+global using ApiGateway.Models.Models.Request;
+global using ApiGateway.Models.Models.Response;
+global using ApiGateway.Models.Models.Response.Base;
+global using Microsoft.Extensions.Configuration;
+global using System;
+global using System.IO;
+global using System.Net.Http;
+global using System.Text.Json.Serialization;
+global using System.Threading.Tasks;
