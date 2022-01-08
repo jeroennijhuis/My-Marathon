@@ -12,6 +12,7 @@ export class LoginComponent {
 
   private readonly nrOfFootprints = 7;
   public nrOfFootprintsArray = new Array(this.nrOfFootprints);
+  public isLoading: boolean = false;
 
   public constructor(tokenService: TokenService, private authService: AuthService, router: Router, route: ActivatedRoute) {
     if(!!tokenService.getToken()){
@@ -21,6 +22,7 @@ export class LoginComponent {
     const code: string = route.snapshot.queryParams['code'];
     if(!!code)
     {
+      this.isLoading = true;
       const state: string = route.snapshot.queryParams['state'];
       const scope: string = route.snapshot.queryParams['scope'];
 

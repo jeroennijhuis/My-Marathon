@@ -1,7 +1,7 @@
 import { AccessTokenResponse } from './models/access-token-response.d';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, tap, throwError } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { TokenService } from '../token/token.service';
 
 @Injectable({
@@ -9,14 +9,13 @@ import { TokenService } from '../token/token.service';
 })
 export class AuthService {
 
-  // TODO MOVE CLIENT CREDS AND AUTHORIZATION TO LAMBDA
   // TODO ERROR HANDLING
 
   private static readonly CLIENT_ID = '75268';
-  private static readonly CLIENT_SECRET = '';
-  private static readonly API_BASE_URL = '';
+  private static readonly API_BASE_URL = 'https://www.strava.com';
 
-  public static REDIRECT_URL = 'http://localhost:4200/login';
+  public static REDIRECT_URL = 'https://running.jnijhuis.nl/login';
+  // public static REDIRECT_URL = 'http://localhost:4200/login';
 
   public constructor(
     private httpClient: HttpClient,
@@ -39,16 +38,7 @@ export class AuthService {
 
   public getAccessToken(code: string): Observable<any> {
 
-    const headers = new HttpHeaders()
-      .append('Content-Type', 'application/x-www-form-urlencoded');
-
-    const body = new HttpParams()
-      .append('client_id', AuthService.CLIENT_ID)
-      .append('client_secret', AuthService.CLIENT_SECRET)
-      .append('code', code)
-      .append('grant_type', 'authorization_code');
-
-    return this.httpClient.post<AccessTokenResponse>(`https://www.strava.com/api/v3/oauth/token`, body, { headers })
+    return this.httpClient.post<AccessTokenResponse>(`https://age8n250gl.execute-api.eu-west-1.amazonaws.com/Development/StravaApi`, { code })
     .pipe(
       tap(response => {
         this.tokenService.saveToken(response.access_token);

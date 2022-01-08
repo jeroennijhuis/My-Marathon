@@ -56,7 +56,9 @@ export class AuthInterceptor implements HttpInterceptor {
             //     location.reload();
             //   });
           } else {
-            this.router.navigate(['login']).then(_ => console.log('redirect to login'));
+            this.tokenService.removeRefreshToken();
+            this.tokenService.removeToken();
+            this.router.navigate(['login']);
           }
         }
         return throwError(error);

@@ -4,8 +4,7 @@ import { Activity } from './models/strava/activity.d';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, defer, of, from, mergeMap, EMPTY, concat, tap, mapTo, timeout, filter} from 'rxjs';
-import activitiesMock from './../../../tmp/activities-data.json';
+import { Observable, catchError, defer, of, mergeMap, EMPTY, concat} from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
