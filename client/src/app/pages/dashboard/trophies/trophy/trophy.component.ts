@@ -43,7 +43,6 @@ export class TrophyComponent {
   @Input() public set runs(value: Run[]) {
     this._runs = value;
 
-    this.mostRecentRun = value.sort((a, b) => b.startTime.getTime() - a.startTime.getTime())[0];
     this.fastestRun = value.sort((a, b) => b.average_speed- a.average_speed)[0];
   }
   public get runs(): Run[] {
@@ -52,11 +51,9 @@ export class TrophyComponent {
 
   public distanceTypeEnum = DistanceType;
 
-  public mostRecentRun: Run | undefined;
   public fastestRun: Run | undefined;
   public title: string = '';
 
   public trophyIcon = faTrophy;
-  public calendarIcon = faCalendarAlt;
   public speedIcon = faTachometerAlt;
 }

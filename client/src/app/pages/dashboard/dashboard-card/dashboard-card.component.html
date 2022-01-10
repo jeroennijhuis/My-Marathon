@@ -1,0 +1,14 @@
+<div class="card info-card">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <div class="d-flex align-items-center">
+      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center" [style.color]="iconColor" [style.background]="iconBackgroundColor">
+        <fa-icon *ngIf="icon" [icon]="icon"></fa-icon>
+      </div>
+      <div class="ps-3">
+        <h6>{{text}}</h6>
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

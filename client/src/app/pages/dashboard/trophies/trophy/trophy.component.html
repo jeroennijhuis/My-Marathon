@@ -12,9 +12,8 @@
     </div>
     <div class="col trophy_stats">
       <h3> {{title}}</h3>
-        <ng-container *ngIf="runs.length > 0 && mostRecentRun && fastestRun">
+        <ng-container *ngIf="runs.length > 0 && fastestRun">
           <fa-icon class="stats-icon" [icon]="speedIcon"></fa-icon> <span><a [href]="'https://www.strava.com/activities/' + fastestRun.stravaId"  target="_blank" rel="noreferrer noopener">{{fastestRun?.average_speed | speed}}</a></span><br/>
-          <fa-icon class="stats-icon" [icon]="calendarIcon"></fa-icon> <span><a [href]="'https://www.strava.com/activities/' + mostRecentRun.stravaId"  target="_blank" rel="noreferrer noopener">{{mostRecentRun.endtime | dateTimeDiff}}</a></span>
         </ng-container>
       <p *ngIf="runs.length === 0">Not yet achieved.</p>
     </div>

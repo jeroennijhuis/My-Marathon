@@ -1,0 +1,78 @@
+<div class="main-content">
+  <div class="background">
+</div>
+
+<main id="main" class="main">
+
+  <section class="section dashboard">
+    <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+
+            <app-dashboard-card class="col-xxl-4 col-md-6"
+              [icon]="roadIcon" iconColor="#2eca6a" iconBackgroundColor="#e0f8e9"
+              title="Total distance"
+              text="{{(totalDistance / 1000) | number: '1.2-2'}} KM" >
+              <span class="text-muted small pt-2 ps-1">Personal best: </span><span *ngIf="mostDistanceRun" class="text-success small pt-1 fw-bold">{{(mostDistanceRun.distance / 1000) | number: '1.2-2'}} KM</span>
+            </app-dashboard-card>
+
+            <app-dashboard-card class="col-xxl-4 col-md-6"
+              [icon]="mountainIcon"
+              title="Total elevation"
+              text="{{(totalElevation / 1000) | number: '1.2-2'}} KM" >
+              <span class="text-muted small pt-2 ps-1">Personal best: </span><span *ngIf="mostElevationRun" class="text-success small pt-1 fw-bold">{{mostElevationRun.elevation}}m</span>
+            </app-dashboard-card>
+
+            <app-dashboard-card class="col-xxl-4 col-md-6"
+              [icon]="thumbsUpIcon" iconColor="#FB4C02" iconBackgroundColor="#F4E5DE"
+              title="Total kudos"
+              text="{{totalKudos | number: '1.0'}}" >
+              <span class="text-muted small pt-2 ps-1">Most kudos: </span><span *ngIf="mostKudosRun" class="text-success small pt-1 fw-bold">{{mostKudosRun.kudos_count}}</span>
+            </app-dashboard-card>
+
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Trophies</h5>
+                  <app-trophies *ngIf="runs" [runs]="runs" > </app-trophies>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Total distance by month</h5>
+
+                  <!-- Bar Chart -->
+                  <div style="display: block;">
+                    <canvas baseChart
+                      [datasets]="barChartData"
+                      [labels]="barChartLabels"
+                      [options]="barChartOptions"
+                      [plugins]="barChartPlugins"
+                      [legend]="barChartLegend"
+                      [type]="barChartType">
+                    </canvas>
+                  </div>
+
+                  <!-- End Bar CHart -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+          <app-activity-timeline title="Recent Activity" [runs]="recentRuns"></app-activity-timeline>
+
+        </div><!-- End Right side columns -->
+
+    </div>
+  </section>
+</main>

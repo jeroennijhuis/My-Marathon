@@ -1,3 +1,5 @@
+import { DistanceType } from 'src/app/services/strava/models/custom/enum/distance-type';
+import { getDistanceType } from 'src/app/utils/distance.util';
 import { Activity } from './../strava/activity.d';
 
 export class Run {
@@ -9,6 +11,7 @@ export class Run {
 
     this.name = activity.name;
 
+    this.distanceType = getDistanceType(activity.distance);
     this.distance = activity.distance;
     this.elevation = activity.total_elevation_gain;
 
@@ -29,6 +32,7 @@ export class Run {
   public name: string;
 
   // Distance (m)
+  public distanceType: DistanceType;
   public distance: number;
   public elevation: number;
 
