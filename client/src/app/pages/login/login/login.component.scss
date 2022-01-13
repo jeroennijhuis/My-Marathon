@@ -1,7 +1,32 @@
+.strava-button {
+  border:0px;
+
+  img {
+    height: 20px;
+    margin-left: 10px;
+  }
+
+  span {
+    vertical-align: middle;
+  }
+}
+
+.demo-button {
+  border-color: #CC4200;
+  background-color: white;
+  color: #CC4200;
+  span {
+    vertical-align: middle;
+  }
+}
+
+.btn-primary {
+  background-color: #CC4200;
+}
+
 .main-content {
   display: grid;
   align-items: center;
-  justify-content: center;
   height: 100vh;
 
   .background {
@@ -19,6 +44,8 @@
     z-index: -1;
 
   }
+
+
 
   .container {
     input {

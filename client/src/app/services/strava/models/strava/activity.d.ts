@@ -39,7 +39,7 @@ export interface Activity {
   type?: ActivityType | null;
 
   // The time at which the activity was started.
-  start_date: number;
+    start_date: number;
 
   // The time at which the activity was started in the local timezone.
   start_date_local: string;

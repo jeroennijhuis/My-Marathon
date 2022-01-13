@@ -14,17 +14,18 @@ export class TimePipe implements PipeTransform {
           return '';
     }
 
-    const hours = Math.trunc(seconds / TimeConstants.hour);
+    const days = Math.trunc(seconds / TimeConstants.day);
+    const hours = Math.trunc((seconds % TimeConstants.day) / TimeConstants.hour);
     const minutes = Math.trunc((seconds % TimeConstants.hour) / TimeConstants.minute);
     seconds = Math.trunc(seconds % TimeConstants.minute);
 
-    let result = '';
-    if(hours > 0) result += (hours + 'h');
-    if(minutes > 0) result += (' ' + minutes + 'm');
-    if(seconds > 0) result += (' ' + seconds + 's');
+    let result: string[] = [];
+    if(days > 0) result.push(days + 'd');
+    if(hours > 0) result.push(hours + 'h');
+    if(minutes > 0) result.push(minutes + 'm');
+    if(seconds > 0) result.push(seconds + 's');
 
-    result.trim();
-    return result;
+    return result.slice(0,3).join(' ');
   }
 
 }

@@ -9,13 +9,9 @@ import { TokenService } from '../token/token.service';
 })
 export class AuthService {
 
-  // TODO ERROR HANDLING
-
   private static readonly CLIENT_ID = '75268';
   private static readonly API_BASE_URL = 'https://www.strava.com';
-
-  public static REDIRECT_URL = 'https://running.jnijhuis.nl/login';
-  // public static REDIRECT_URL = 'http://localhost:4200/login';
+  public static REDIRECT_URL = 'http://localhost:4200/login';
 
   public constructor(
     private httpClient: HttpClient,

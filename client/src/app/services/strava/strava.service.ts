@@ -1,10 +1,11 @@
-import { Run } from './models/custom/run';
+import { Run } from 'src/app/services/strava/models/custom/run';
 import { ActivityType } from './models/strava/activity-type';
 import { Activity } from './models/strava/activity.d';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, defer, of, mergeMap, EMPTY, concat} from 'rxjs';
+import { Observable, catchError, defer, of, mergeMap, EMPTY, concat, expand, tap
+} from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -16,14 +17,12 @@ export class StravaService {
     public constructor(private httpClient: HttpClient) { }
 
     public getRuns(page: number = 1): Observable<Run[]> {
-      return defer(() => this.fetchPage(page))
-      .pipe(
-        mergeMap((runs: Run[]) => {
-          const items$ = of(runs);
-          const next$ = runs?.length >= (this.maxPageSize - 1) ? this.getRuns(page + 1) : EMPTY;
-          return concat(items$, next$);
-        })
-      )
+      return this.fetchPage(page).pipe(
+        expand((runs: Run[], _i: Number) => runs?.length >= (this.maxPageSize - 1)
+          ? this.fetchPage(page + 1)
+          : EMPTY
+        )
+      );
     }
 
     private fetchPage(page: number): Observable<Run[]> {

@@ -48,5 +48,5 @@ export class Run {
 
   // Speed (m/s)
   public average_speed: number;
-  public max_speed: number | null;
+  public max_speed: number;
 }

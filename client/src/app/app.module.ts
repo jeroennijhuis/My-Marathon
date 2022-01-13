@@ -1,3 +1,5 @@
+import { DemoService } from './services/demo/demo.service';
+import { LoadingComponent } from './components/loading/loading.component';
 import { TrophiesComponent } from './pages/dashboard/trophies/trophies.component';
 import { DashboardCardComponent } from './pages/dashboard/dashboard-card/dashboard-card.component';
 import { DateTimeDiffPipe } from './pipes/date-time-diff.pipe';
@@ -19,6 +21,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TrophyComponent } from './pages/dashboard/trophies/trophy/trophy.component';
 import { ActivityTimelineComponent } from './pages/dashboard/activity-timeline/activity-timeline.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,20 +35,24 @@ import { ActivityTimelineComponent } from './pages/dashboard/activity-timeline/a
     SpeedPipe,
     DashboardCardComponent,
     ActivityTimelineComponent,
-    DashboardCardComponent
+    DashboardCardComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
-    NgChartsModule
+    NgChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
     TokenService,
     DecimalPipe,
+    SpeedPipe,
     StravaService,
+    DemoService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

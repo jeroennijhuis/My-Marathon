@@ -2,7 +2,9 @@
   <div class="background">
 </div>
 
-<main id="main" class="main">
+<app-loading *ngIf="!isLoaded" class="lds-facebook"></app-loading>
+
+<main id="main" class="main" [@isLoaded]="isLoaded" >
 
   <section class="section dashboard">
     <div class="row">
@@ -15,36 +17,60 @@
               [icon]="roadIcon" iconColor="#2eca6a" iconBackgroundColor="#e0f8e9"
               title="Total distance"
               text="{{(totalDistance / 1000) | number: '1.2-2'}} KM" >
-              <span class="text-muted small pt-2 ps-1">Personal best: </span><span *ngIf="mostDistanceRun" class="text-success small pt-1 fw-bold">{{(mostDistanceRun.distance / 1000) | number: '1.2-2'}} KM</span>
+              <a *ngIf="mostDistanceRun" [href]="'https://www.strava.com/activities/' + mostDistanceRun.stravaId"  target="_blank" rel="noreferrer noopener">
+                <span class="text-muted small pt-2 ps-1">Personal best: </span> <span class="text-success small pt-1 fw-bold">{{(mostDistanceRun.distance / 1000) | number: '1.2-2'}} KM</span>
+              </a>
             </app-dashboard-card>
 
             <app-dashboard-card class="col-xxl-4 col-md-6"
               [icon]="mountainIcon"
               title="Total elevation"
               text="{{(totalElevation / 1000) | number: '1.2-2'}} KM" >
-              <span class="text-muted small pt-2 ps-1">Personal best: </span><span *ngIf="mostElevationRun" class="text-success small pt-1 fw-bold">{{mostElevationRun.elevation}}m</span>
+              <a *ngIf="mostElevationRun" [href]="'https://www.strava.com/activities/' + mostElevationRun.stravaId"  target="_blank" rel="noreferrer noopener">
+                <span class="text-muted small pt-2 ps-1">Personal best: </span><span class="text-success small pt-1 fw-bold">{{mostElevationRun.elevation}}m</span>
+              </a>
+            </app-dashboard-card>
+
+            <app-dashboard-card class="col-xxl-4 col-md-6"
+              [icon]="timeSpentIcon" iconColor="#700460" iconBackgroundColor="#e5d5e3"
+              title="Total time spent"
+              text="{{totalTimeSpent | time}}" >
+              <a *ngIf="longestRun" [href]="'https://www.strava.com/activities/' + longestRun.stravaId"  target="_blank" rel="noreferrer noopener">
+                <span class="text-muted small pt-2 ps-1">Longest run: </span><span class="text-success small pt-1 fw-bold">{{longestRun.movingtime | time}}</span>
+              </a>
+            </app-dashboard-card>
+
+            <app-dashboard-card class="col-xxl-4 col-md-6"
+              [icon]="fastestPaceIcon" iconColor="#e5ad4b" iconBackgroundColor="#f7efe1"
+              title="Fastest pace"
+              text="{{fastestPace | speed}}" >
+              <a *ngIf="fastestPaceRun" [href]="'https://www.strava.com/activities/' + fastestPaceRun.stravaId"  target="_blank" rel="noreferrer noopener">
+                <span class="text-muted small pt-2 ps-1">Check your run</span>
+              </a>
             </app-dashboard-card>
 
             <app-dashboard-card class="col-xxl-4 col-md-6"
               [icon]="thumbsUpIcon" iconColor="#FB4C02" iconBackgroundColor="#F4E5DE"
               title="Total kudos"
               text="{{totalKudos | number: '1.0'}}" >
-              <span class="text-muted small pt-2 ps-1">Most kudos: </span><span *ngIf="mostKudosRun" class="text-success small pt-1 fw-bold">{{mostKudosRun.kudos_count}}</span>
+              <a *ngIf="mostKudosRun" [href]="'https://www.strava.com/activities/' + mostKudosRun.stravaId"  target="_blank" rel="noreferrer noopener">
+                <span class="text-muted small pt-2 ps-1">Most kudos: </span><span class="text-success small pt-1 fw-bold">{{mostKudosRun.kudos_count}}</span>
+              </a>
             </app-dashboard-card>
 
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Trophies</h5>
-                  <app-trophies *ngIf="runs" [runs]="runs" > </app-trophies>
-                </div>
-              </div>
-            </div>
+            <app-dashboard-card class="col-xxl-4 col-md-6"
+              [icon]="commentsIcon" iconColor="#2CADBD" iconBackgroundColor="#dcf0f2"
+              title="Total comments"
+              text="{{totalComments}}" >
+              <a *ngIf="mostCommentsRun" [href]="'https://www.strava.com/activities/' + mostCommentsRun.stravaId"  target="_blank" rel="noreferrer noopener">
+                <span class="text-muted small pt-2 ps-1">Most comments: </span><span class="text-success small pt-1 fw-bold">{{mostCommentsRun.comment_count}}</span>
+              </a>
+            </app-dashboard-card>
 
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Total distance by month</h5>
+                  <h5 class="card-title">Total distance by month (km)</h5>
 
                   <!-- Bar Chart -->
                   <div style="display: block;">
@@ -53,7 +79,7 @@
                       [labels]="barChartLabels"
                       [options]="barChartOptions"
                       [plugins]="barChartPlugins"
-                      [legend]="barChartLegend"
+                      [legend]="false"
                       [type]="barChartType">
                     </canvas>
                   </div>
@@ -63,11 +89,40 @@
                 </div>
               </div>
             </div>
+
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Average pace by month (min / km)</h5>
+
+                  <!-- Line Chart -->
+                  <div style="display: block;">
+                    <canvas baseChart
+                      [data]="lineChartData"
+                      [labels]="barChartLabels"
+                      [options]="lineChartOptions"
+                      [legend]="false"
+                      [type]="lineChartType">
+                    </canvas>
+                  </div>
+                  <!-- End Line CHart -->
+
+                </div>
+              </div>
+            </div>
           </div>
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
         <div class="col-lg-4">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Trophies</h5>
+              <app-trophies *ngIf="runs" [runs]="runs" > </app-trophies>
+            </div>
+          </div>
+
 
           <app-activity-timeline title="Recent Activity" [runs]="recentRuns"></app-activity-timeline>
 

@@ -5,7 +5,7 @@
 .info-card h6 {
   font-size: 28px;
   color: #012970;
-  font-weight: 700;
+  font-weight: 500;
   margin: 0;
   padding: 0;
 }
@@ -16,4 +16,8 @@
   height: 64px;
   flex-shrink: 0;
   flex-grow: 0;
+
+  i {
+    font-size: 40px;
+  }
 }
