@@ -1,6 +1,5 @@
-import { DecimalPipe, formatNumber } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
-import { DistanceConstants } from '../constants/distance.contstants';
 
 @Pipe({
   name: 'speed'

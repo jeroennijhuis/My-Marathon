@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faClock, faComment, faCommentAlt, faMountain, faRoad, faRunning, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { ChartConfiguration, ChartDataset, ChartOptions, ChartType } from 'chart.js';
-import { SpeedPipe } from 'src/app/pipes/speed.pipe';
 import { Run } from 'src/app/services/strava/models/custom/run';
 import { StravaService } from 'src/app/services/strava/strava.service';
 import {
