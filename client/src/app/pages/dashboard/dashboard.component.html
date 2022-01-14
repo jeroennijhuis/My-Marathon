@@ -17,7 +17,7 @@
               [icon]="roadIcon" iconColor="#2eca6a" iconBackgroundColor="#e0f8e9"
               title="Total distance"
               text="{{(totalDistance / 1000) | number: '1.2-2'}} KM" >
-              <a *ngIf="mostDistanceRun" [href]="'https://www.strava.com/activities/' + mostDistanceRun.stravaId"  target="_blank" rel="noreferrer noopener">
+              <a *ngIf="mostDistanceRun" [href]="'https://www.strava.com/activities/' + mostDistanceRun.stravaId" target="_blank" rel="noreferrer noopener">
                 <span class="text-muted small pt-2 ps-1">Personal best: </span> <span class="text-success small pt-1 fw-bold">{{(mostDistanceRun.distance / 1000) | number: '1.2-2'}} KM</span>
               </a>
             </app-dashboard-card>

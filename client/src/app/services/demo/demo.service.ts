@@ -3,6 +3,7 @@ import { catchError, map, Observable, of } from 'rxjs';
 import { Run } from '../strava/models/custom/run';
 import { Activity } from '../strava/models/strava/activity';
 import { ActivityType } from '../strava/models/strava/activity-type';
+import { Page } from '../strava/Page';
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +11,22 @@ import { ActivityType } from '../strava/models/strava/activity-type';
 export class DemoService {
 
   private readonly DEMO_MODE_ENABLED = 'demo_mode_enabled';
+  private readonly enabledValue: string = 'true';
 
   isEnabled(): boolean {
-    const value = localStorage.getItem(this.DEMO_MODE_ENABLED);
-    return !!value;
+    const value = sessionStorage.getItem(this.DEMO_MODE_ENABLED);
+    return !!value && value === this.enabledValue;
   }
 
   enable(): void {
-    return localStorage.setItem(this.DEMO_MODE_ENABLED, 'true');
+    return sessionStorage.setItem(this.DEMO_MODE_ENABLED, this.enabledValue);
   }
 
   disable(): void {
-    localStorage.removeItem(this.DEMO_MODE_ENABLED);
+    sessionStorage.removeItem(this.DEMO_MODE_ENABLED);
   }
 
-  public getRuns(): Observable<Run[]>{
+  public getRuns(): Observable<Page<Run>>{
     const items = Array.from(Array(100).keys())
 
     const random: Activity[] = items.map((_v: any, index: number) => {
@@ -43,7 +45,7 @@ export class DemoService {
         max_speed: speed,
         moving_time: timeInSeconds,
         elapsed_time: timeInSeconds,
-        name: `demo run ` + index.toString(),
+        name: `RUN #${index.toString()} (DEMO DATA)`,
         photo_count: 0,
         total_elevation_gain: elevation,
         elev_low: elevation,
@@ -78,7 +80,8 @@ export class DemoService {
         catchError(err => {
           throw err;
         }
-      )
+      ),
+      map(x => new Page<Run>(0, x, true))
     );
   }
 

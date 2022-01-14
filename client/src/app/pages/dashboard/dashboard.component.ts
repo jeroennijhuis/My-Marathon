@@ -13,6 +13,7 @@ import {
 } from '@angular/animations';
 import { DemoService } from 'src/app/services/demo/demo.service';
 import { delay, timeout } from 'rxjs';
+import { Page } from 'src/app/services/strava/Page';
 
 @Component({
   templateUrl: './dashboard.component.html',
@@ -165,12 +166,13 @@ export class DashboardComponent  {
   };
 
   public constructor(stravaService: StravaService, demoService: DemoService) {
-
     const runs$ = demoService.isEnabled() ? demoService.getRuns().pipe(delay(1000)) : stravaService.getRuns();
 
-    runs$.subscribe(runs => {
-      this.runs = this.runs.concat(runs);
-      this.isLoaded = true;
+    runs$.subscribe((page: Page<Run>) => {
+      this.runs = this.runs.concat(page.value);
+      if(page.isCompleted){
+        this.isLoaded = true;
+      }
     });
   }
 }

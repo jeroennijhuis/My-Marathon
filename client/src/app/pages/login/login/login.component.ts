@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs/operators';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faRoad, IconDefinition } from '@fortawesome/free-solid-svg-icons';
@@ -17,18 +18,17 @@ export class LoginComponent {
   public stravaIcon: IconDefinition = faRoad;
 
   public constructor(tokenService: TokenService, private demoService: DemoService, private authService: AuthService, private router: Router, route: ActivatedRoute) {
-    if(!!tokenService.getToken()){
+    if(!!tokenService.getAccessToken()){
       router.navigate([`/`]);
     }
 
     const code: string = route.snapshot.queryParams['code'];
-    if(!!code)
-    {
-      this.isLoading = true;
-      const state: string = route.snapshot.queryParams['state'];
-      const scope: string = route.snapshot.queryParams['scope'];
+    const scope: string = route.snapshot.queryParams['scope'];
 
-      this.authService.getAccessToken(code).subscribe(_ => this.goToDashboard());
+    if(!!code && !!scope && this.authService.validateScope(scope))
+    {
+      this.authService.getAccessToken(code)
+        .subscribe(_ => this.goToDashboard());
     }
   }
 
