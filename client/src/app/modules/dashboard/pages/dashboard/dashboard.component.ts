@@ -3,15 +3,9 @@ import { faClock, faComment, faCommentAlt, faMountain, faRoad, faRunning, faThum
 import { ChartConfiguration, ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { Run } from 'src/app/services/strava/models/custom/run';
 import { StravaService } from 'src/app/services/strava/strava.service';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { trigger, state, style, animate, transition} from '@angular/animations';
 import { DemoService } from 'src/app/services/demo/demo.service';
-import { delay, timeout } from 'rxjs';
+import { delay } from 'rxjs';
 import { Page } from 'src/app/services/strava/Page';
 
 @Component({
@@ -19,13 +13,24 @@ import { Page } from 'src/app/services/strava/Page';
   styleUrls: ['./dashboard.component.scss'],
   animations: [
     trigger('isLoaded', [
-      transition(':enter, * => 0, * => -1', []),
-      state('true' , style({ opacity: 1 })),
-      state('false', style({ opacity: 0 })),
-      transition('1 => 0', animate('300ms')),
-      transition('0 => 1', animate('1000ms'))
-])
-]
+      transition(
+        ':enter',
+        [
+          style({ opacity: 0 }),
+          animate('1s ease-in',
+                  style({ opacity: 1 }))
+        ]
+      ),
+      transition(
+        ':leave',
+        [
+          style({ opacity: 1 }),
+          animate('1s ease-out',
+                  style({ opacity: 0 }))
+        ]
+      )
+    ])
+  ]
 })
 export class DashboardComponent  {
 

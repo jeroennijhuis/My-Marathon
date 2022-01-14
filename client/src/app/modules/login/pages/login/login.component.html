@@ -1,13 +1,10 @@
-<div class="main-content">
-  <div class="background">
-</div>
-
 <main>
   <div class="container">
     <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+          <app-loading  *ngIf="isLoading"></app-loading>
+          <div *ngIf="!isLoading" class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
             <div class="card mb-3">
               <div class="card-body">
                 <div class="pt-4 pb-2">
@@ -16,7 +13,7 @@
                 </div>
                 <div class="row g-3">
                   <div class="col-12">
-                    <button class="btn btn-primary w-100 strava-button" (click)="login()"><span>Login with</span><img src="../../../../assets/img/strava.png"></button>
+                    <button class="btn btn-primary w-100 strava-button" (click)="login()"><span>Login with</span><img src="../../../../../assets/img/strava.png"></button>
                   </div>
                   <div class="col-12">
                     <button class="btn w-100 demo-button" (click)="showDemo()">Demo</button>
@@ -24,7 +21,7 @@
                   <div class="col-12 ">
                     <hr>
                     <a href="https://github.com/jeroennijhuis/My-Marathon" target="_blank" rel="noreferrer noopener">
-                      <img class="github-link text-center d-flex flex-column align-items-center justify-content-center" src="../../../../assets/img/github.png">
+                      <img class="github-link text-center d-flex flex-column align-items-center justify-content-center" src="../../../../../assets/img/github.png">
                     </a>
                   </div>
                 </div>

@@ -6,17 +6,17 @@ import { LoginComponent } from './modules/login/pages/login/login.component';
 
 const routes: Routes = [
   {
-    path: '',
-    canActivate: [ AuthGuard ],
+    path: 'dashboard',
     component: DashboardComponent ,
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'login',
     component: LoginComponent ,
     loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({

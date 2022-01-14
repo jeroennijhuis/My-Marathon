@@ -8,18 +8,19 @@ import { TimePipe } from 'src/app/pipes/time.pipe';
 import { SpeedPipe } from 'src/app/pipes/speed.pipe';
 import { DashboardCardComponent } from './pages/dashboard/dashboard-card/dashboard-card.component';
 import { ActivityTimelineComponent } from './pages/dashboard/activity-timeline/activity-timeline.component';
-import { LoadingComponent } from 'src/app/components/loading/loading.component';
 import { StravaService } from 'src/app/services/strava/strava.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgChartsModule } from 'ng2-charts';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FontAwesomeModule,
-    NgChartsModule
+    NgChartsModule,
+    SharedModule
   ],
   declarations: [
     DashboardComponent,
@@ -30,8 +31,7 @@ import { NgChartsModule } from 'ng2-charts';
     SpeedPipe,
     DashboardCardComponent,
     ActivityTimelineComponent,
-    DashboardCardComponent,
-    LoadingComponent
+    DashboardCardComponent
   ],
   providers: [
     DecimalPipe,

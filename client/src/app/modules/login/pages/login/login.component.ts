@@ -19,7 +19,7 @@ export class LoginComponent {
 
   public constructor(tokenService: TokenService, private demoService: DemoService, private authService: AuthService, private router: Router, route: ActivatedRoute) {
     if(!!tokenService.getAccessToken()){
-      router.navigate([`/`]);
+      this.goToDashboard();
     }
 
     const code: string = route.snapshot.queryParams['code'];
@@ -27,6 +27,8 @@ export class LoginComponent {
 
     if(!!code && !!scope && this.authService.validateScope(scope))
     {
+      this.isLoading = true;
+
       this.authService.getAccessToken(code)
         .subscribe(_ => this.goToDashboard());
     }
