@@ -1,10 +1,12 @@
+@import '/src/styles/colors.scss';
+
 /* Info Cards */
 .info-card {
   padding-bottom: 10px;
 }
 .info-card h6 {
   font-size: 28px;
-  color: #012970;
+  color: $app-primary;
   font-weight: 500;
   margin: 0;
   padding: 0;

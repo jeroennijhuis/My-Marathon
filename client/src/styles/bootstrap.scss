@@ -141,7 +141,7 @@
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #012970;
+  color: $app-primary;
   font-family: 'Bungee', cursive;
 
 }
@@ -185,7 +185,7 @@
   box-shadow: none;
 }
 .accordion-button:not(.collapsed) {
-  color: #012970;
+  color: $app-primary;
   background-color: #f6f9ff;
 }
 

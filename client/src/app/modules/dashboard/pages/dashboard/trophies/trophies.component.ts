@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DistanceType } from 'src/app/services/strava/models/custom/enum/distance-type';
 import { Run } from 'src/app/services/strava/models/custom/run';
 import { getDistanceType } from 'src/app/utils/distance.util';

@@ -5,7 +5,6 @@
 <main *ngIf="isLoaded" id="main" class="main" [@isLoaded]>
   <section class="section dashboard">
     <div class="row">
-
         <!-- Left side columns -->
         <div class="col-lg-8">
           <div class="row">
@@ -64,55 +63,47 @@
               </a>
             </app-dashboard-card>
 
+            <!-- BAR CHART -->
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">Total distance by month (km)</h5>
 
-                  <!-- Bar Chart -->
                   <div style="display: block;">
                     <canvas baseChart
                       [datasets]="barChartData"
                       [labels]="barChartLabels"
                       [options]="barChartOptions"
-                      [plugins]="barChartPlugins"
                       [legend]="false"
-                      [type]="barChartType">
+                      type="bar">
                     </canvas>
                   </div>
-
-                  <!-- End Bar CHart -->
-
                 </div>
               </div>
             </div>
 
+            <!-- LINE CHART  -->
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">Average pace by month (min / km)</h5>
-
-                  <!-- Line Chart -->
                   <div style="display: block;">
                     <canvas baseChart
                       [data]="lineChartData"
-                      [labels]="barChartLabels"
                       [options]="lineChartOptions"
                       [legend]="false"
-                      [type]="lineChartType">
+                      type="line">
                     </canvas>
                   </div>
-                  <!-- End Line CHart -->
-
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- End Left side columns -->
+        </div>
+        <!-- End Left side columns -->
 
         <!-- Right side columns -->
         <div class="col-lg-4">
-
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Trophies</h5>
@@ -120,11 +111,9 @@
             </div>
           </div>
 
-
           <app-activity-timeline title="Recent Activity" [runs]="recentRuns"></app-activity-timeline>
-
-        </div><!-- End Right side columns -->
-
+        </div>
+        <!-- End Right side columns -->
     </div>
   </section>
 </main>

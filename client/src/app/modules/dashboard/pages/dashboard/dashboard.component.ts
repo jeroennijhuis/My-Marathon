@@ -35,83 +35,44 @@ import { Page } from 'src/app/services/strava/Page';
 export class DashboardComponent  {
 
   private _runs: Run[] = [];
-  public isLoaded = false;
 
   @Input()
   public set runs(value: Run[]){
     this._runs = value;
-    this.recentRuns = value.sort((a, b) => b.startTime.getTime() - a.startTime.getTime()).slice(0, 11);
-
-    this.totalElevation = value.reduce((sum, current) => sum + current.elevation, 0);
-    this.mostElevationRun = value.sort((a, b) => b.elevation - a.elevation)[0];
-
-    this.totalDistance = value.reduce((sum, current) => sum + current.distance, 0);
-    this.mostDistanceRun = value.sort((a, b) => b.distance - a.distance)[0];
-
-    this.totalKudos = value.reduce((sum, current) => sum + current.kudos_count, 0);
-    this.mostKudosRun = value.sort((a, b) => b.kudos_count - a.kudos_count)[0];
-
-    this.fastestPaceRun = value.sort((a, b) => b.max_speed - a.max_speed)[0];
-    this.fastestPace = this.fastestPaceRun.max_speed;
-
-    this.fastestPaceRun = value.sort((a, b) => b.max_speed - a.max_speed)[0];
-    this.fastestPace = this.fastestPaceRun.max_speed;
-
-    this.totalTimeSpent = value.reduce((sum, current) => sum + current.movingtime, 0);
-    this.longestRun = value.sort((a, b) => b.movingtime - a.movingtime)[0];
-
-    this.mostCommentsRun = value.sort((a, b) => b.comment_count - a.comment_count)[0];
-    this.totalComments = value.reduce((sum, current) => sum + current.comment_count, 0);
-
-    // Charts
-    let months=["January","February","March","April","June", "July", "August", "September", "October", "November", "December"];
-    let currentMonth=new Date().getMonth();
-    const labels = months.slice(currentMonth-7).concat(months.slice(0,currentMonth + 1));
-    this.barChartLabels = labels;
-    this.lineChartData.labels = labels;
-
-    var d = new Date();
-    d.setMonth(d.getMonth() - 7);
-    const beginDate = new Date(d.getFullYear(), d.getMonth());
-
-    for (let i = 0; i <= 7 ; i++) {
-      const tempBeginDate = new Date(beginDate.getTime());
-      tempBeginDate.setMonth(beginDate.getMonth() + i);
-      const tempEndDate = new Date(beginDate.getTime());
-      tempEndDate.setMonth(beginDate.getMonth() + i + 1);
-
-      const scopedRuns = value.filter(x => x.startTime.getTime() >= tempBeginDate.getTime() && x.startTime.getTime() < tempEndDate.getTime());
-      const totalDistance = scopedRuns.reduce((sum, current) => sum + current.distance / 1000, 0);
-      const avgPace = scopedRuns.reduce((sum, current) => sum + current.average_speed, 0) / scopedRuns.length;
-      this.barChartData[0].data.push(totalDistance);
-      this.lineChartData.datasets[0].data.push(16.6666667 / avgPace);
-    }
+    this.updateRuns(value);
   }
 
   public get runs(): Run[]{
     return this._runs;
   }
 
+  public isLoaded = false;
+
   // Distance
   public roadIcon = faRoad;
   public totalDistance: number = 0;
   public mostDistanceRun: Run | undefined;
+
   // Elevation
   public mountainIcon = faMountain;
   public totalElevation: number = 0;
   public mostElevationRun: Run | undefined;
+
   // Kudos
   public thumbsUpIcon = faThumbsUp;
   public totalKudos: number = 0;
   public mostKudosRun: Run | undefined;
+
   // Pace
   public fastestPaceIcon = faRunning;
   public fastestPace: number = 0;
   public fastestPaceRun: Run | undefined;
+
   // Time
   public timeSpentIcon = faClock;
   public totalTimeSpent: number = 0;
   public longestRun: Run | undefined;
+
    // Comments
    public commentsIcon = faCommentAlt;
    public totalComments: number = 0;
@@ -119,13 +80,12 @@ export class DashboardComponent  {
 
   public recentRuns: Run[] = [];
 
-  // bar chart
+  // Bar Chart
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: any[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType: ChartType = 'bar';
-  public barChartPlugins = [];
+
+  public barChartLabels: any[] = [];
   public chartColors: any[] = [
     {
       backgroundColor:["#FF7360", "#6FC8CE", "#FAFFF2", "#FFFCC4", "#B9E8E0"]
@@ -140,7 +100,7 @@ export class DashboardComponent  {
     }
   ];
 
-  // line chart
+  // Line Chart
   public lineChartOptions: ChartOptions = {
     responsive: true,
     scales: {
@@ -150,8 +110,6 @@ export class DashboardComponent  {
       }
     }
   };
-  public lineChartLabels: any[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public lineChartType: ChartType = 'line';
 
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
@@ -170,7 +128,9 @@ export class DashboardComponent  {
   };
 
   public constructor(stravaService: StravaService, demoService: DemoService) {
-    const runs$ = demoService.isEnabled() ? demoService.getRuns().pipe(delay(1000)) : stravaService.getRuns();
+    const runs$ = demoService.isEnabled()
+      ? demoService.getRuns().pipe(delay(1500))
+      : stravaService.getRuns();
 
     runs$.subscribe((page: Page<Run>) => {
       this.runs = this.runs.concat(page.value);
@@ -178,5 +138,54 @@ export class DashboardComponent  {
         this.isLoaded = true;
       }
     });
+  }
+
+  private updateRuns(runs: Run[]): void {
+    this.recentRuns = runs.sort((a, b) => b.startTime.getTime() - a.startTime.getTime()).slice(0, 11);
+
+    this.totalElevation = runs.reduce((sum, current) => sum + current.elevation, 0);
+    this.mostElevationRun = runs.sort((a, b) => b.elevation - a.elevation)[0];
+
+    this.totalDistance = runs.reduce((sum, current) => sum + current.distance, 0);
+    this.mostDistanceRun = runs.sort((a, b) => b.distance - a.distance)[0];
+
+    this.totalKudos = runs.reduce((sum, current) => sum + current.kudos_count, 0);
+    this.mostKudosRun = runs.sort((a, b) => b.kudos_count - a.kudos_count)[0];
+
+    this.fastestPaceRun = runs.sort((a, b) => b.max_speed - a.max_speed)[0];
+    this.fastestPace = this.fastestPaceRun.max_speed;
+
+    this.fastestPaceRun = runs.sort((a, b) => b.max_speed - a.max_speed)[0];
+    this.fastestPace = this.fastestPaceRun.max_speed;
+
+    this.totalTimeSpent = runs.reduce((sum, current) => sum + current.movingtime, 0);
+    this.longestRun = runs.sort((a, b) => b.movingtime - a.movingtime)[0];
+
+    this.mostCommentsRun = runs.sort((a, b) => b.comment_count - a.comment_count)[0];
+    this.totalComments = runs.reduce((sum, current) => sum + current.comment_count, 0);
+
+    // Charts
+    let months=["January","February","March","April","June", "July", "August", "September", "October", "November", "December"];
+    let currentMonth=new Date().getMonth();
+    const labels = months.slice(currentMonth-7).concat(months.slice(0,currentMonth + 1));
+    this.barChartLabels = labels;
+    this.lineChartData.labels = labels;
+
+    var d = new Date();
+    d.setMonth(d.getMonth() - 7);
+    const beginDate = new Date(d.getFullYear(), d.getMonth());
+
+    for (let i = 0; i <= 7 ; i++) {
+      const tempBeginDate = new Date(beginDate.getTime());
+      tempBeginDate.setMonth(beginDate.getMonth() + i);
+      const tempEndDate = new Date(beginDate.getTime());
+      tempEndDate.setMonth(beginDate.getMonth() + i + 1);
+
+      const scopedRuns = runs.filter(x => x.startTime.getTime() >= tempBeginDate.getTime() && x.startTime.getTime() < tempEndDate.getTime());
+      const totalDistance = scopedRuns.reduce((sum, current) => sum + current.distance / 1000, 0);
+      const avgPace = scopedRuns.reduce((sum, current) => sum + current.average_speed, 0) / scopedRuns.length;
+      this.barChartData[0].data.push(totalDistance);
+      this.lineChartData.datasets[0].data.push(16.6666667 / avgPace);
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, delay, map, Observable, of } from 'rxjs';
 import { Run } from '../strava/models/custom/run';
 import { Activity } from '../strava/models/strava/activity';
 import { ActivityType } from '../strava/models/strava/activity-type';

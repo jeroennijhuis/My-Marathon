@@ -1,3 +1,5 @@
+@import '/src/styles/colors.scss';
+
 .strava-button {
   border:0px;
 
@@ -17,9 +19,9 @@
 }
 
 .demo-button {
-  border-color: #012970;
+  border-color: $app-primary;
   background-color: white;
-  color: #012970;
+  color: $app-primary;
   span {
     vertical-align: middle;
   }
@@ -27,7 +29,7 @@
 
 hr {
   height: 1px;
-  background-color: #012970;
+  background-color: $app-primary;
   opacity: 1;
 }
 

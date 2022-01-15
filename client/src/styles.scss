@@ -8,5 +8,6 @@ body {
   min-height: 100vh;
 }
 
+@import "./styles/colors.scss";
 @import "bootstrap";
 @import "./styles/bootstrap.scss";

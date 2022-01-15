@@ -1,3 +1,5 @@
+@import '/src/styles/colors.scss';
+
 .activity {
   font-size: 14px;
 }
@@ -30,10 +32,10 @@
   &.trophy {
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 
-    &_platinum { color: #e5e4e2 !important; }
-    &_gold   { color: gold !important; }
-    &_silver { color: silver !important; }
-    &_bronze { color: #cd7f32 !important; }
+    &_platinum { color: $platinum !important; }
+    &_gold   { color: $gold !important; }
+    &_silver { color: $silver !important; }
+    &_bronze { color: $bronze !important; }
   }
 }
 .activity .activity-item .activity-content {
@@ -46,4 +48,3 @@
 .activity .activity-item:last-child .activity-content {
   padding-bottom: 0;
 }
-
