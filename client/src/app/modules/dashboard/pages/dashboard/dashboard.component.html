@@ -1,7 +1,8 @@
-<app-loading *ngIf="!isLoaded" class="lds-facebook"></app-loading>
+<div *ngIf="!isLoaded" class="main-content">
+  <app-loading></app-loading>
+</div>
 
 <main *ngIf="isLoaded" id="main" class="main" [@isLoaded]>
-
   <section class="section dashboard">
     <div class="row">
 

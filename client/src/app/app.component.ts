@@ -9,7 +9,6 @@ export class AppComponent {
   // BACKLOG
 
   // TECHNICAL
-  // MODULE DASHBOARD
   // CLEAN UP DASHBOARD COMPONENT
   // DOCKER SETUP
   // PIPELINE
@@ -23,6 +22,4 @@ export class AppComponent {
 
   // BUG
   // MOVING BACKGROUND MOBILE
-  // DASHBOARD SHOWING BEFORE LOGIN (GUARD??)
-  // MISSING LOADING GIF LOGIN
 }

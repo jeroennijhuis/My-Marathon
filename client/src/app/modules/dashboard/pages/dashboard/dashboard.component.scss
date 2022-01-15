@@ -1,3 +1,21 @@
+
+.main-content {
+  display: grid;
+  align-items: center;
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+
+  app-loading {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+
 /**
 * Template Name: NiceAdmin - v2.2.0
 * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
