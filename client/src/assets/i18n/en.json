@@ -1,0 +1,14 @@
+{
+  "trophies-new": "You have {{count}} new trophies",
+  "trophies-no-new": "No new trophies",
+  "trophies": "trophies",
+  "recent-activity": "Recent activity",
+  "total-distance": "Total distance",
+  "total-elevation": "Total elevation",
+  "total-time": "Totale time spent",
+  "fastest-pace": "Fastest pace",
+  "total-kudos": "Total kudos",
+  "total-comments": "Total comments",
+  "total-distance-by-month": "Total distance by month (KM)",
+  "average-pace-by-month": "Average pace by month (min / km)"
+}

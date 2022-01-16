@@ -14,8 +14,8 @@ export class AuthService {
 
   private static readonly CLIENT_ID = '75268';
   private static readonly API_BASE_URL = 'https://www.strava.com';
-  //public static REDIRECT_URL = 'https://running.jnijhuis.nl/login';
-  public static readonly REDIRECT_URL = 'http://localhost:4200/login';
+  public static REDIRECT_URL = 'https://running.jnijhuis.nl/login';
+  // public static readonly REDIRECT_URL = 'http://localhost:4200/login';
   public static readonly REQUIRED_SCOPES: string[] = ['activity:read'];
   public static readonly SCOPE_SEPERATOR: string = ',';
 

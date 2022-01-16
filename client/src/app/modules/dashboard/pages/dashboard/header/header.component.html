@@ -32,7 +32,7 @@
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow language">
           <li>
             <a class="dropdown-item d-flex align-items-center">
-              <img class="flag" src="../../../../../../assets/img/nl.svg">
+              <img (click)="switchLanguage('nl')" class="flag" src="../../../../../../assets/img/nl.svg">
             </a>
           </li>
           <li>
@@ -40,7 +40,7 @@
           </li>
 
           <li>
-            <a class="dropdown-item d-flex align-items-center">
+            <a (click)="switchLanguage('en')" class="dropdown-item d-flex align-items-center">
               <img class="flag" src="../../../../../../assets/img/gb.svg">
             </a>
           </li>
@@ -57,7 +57,9 @@
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
           <li class="dropdown-header">
-            You have {{newTrophyRuns.length}} new trophies
+            <span *ngIf="newTrophyRuns.length > 0">{{ 'trophies-new' | translate: { count: newTrophyRuns.length} }}</span>
+            <span *ngIf="newTrophyRuns.length === 0" translate>trophies-no-new</span>
+
           </li>
 
           <ng-container *ngFor="let trophyRun of newTrophyRuns">

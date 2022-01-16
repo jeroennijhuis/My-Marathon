@@ -13,7 +13,7 @@
 
             <app-dashboard-card class="col-xxl-4 col-md-6"
               [icon]="roadIcon" iconColor="#2eca6a" iconBackgroundColor="#e0f8e9"
-              title="Total distance"
+              [title]="'total-distance' | translate"
               text="{{(totalDistance / 1000) | number: '1.2-2'}} KM" >
               <a *ngIf="mostDistanceRun" [href]="'https://www.strava.com/activities/' + mostDistanceRun.stravaId" target="_blank" rel="noreferrer noopener">
                 <span class="text-muted small pt-2 ps-1">Personal best: </span> <span class="text-success small pt-1 fw-bold">{{(mostDistanceRun.distance / 1000) | number: '1.2-2'}} KM</span>
@@ -22,7 +22,7 @@
 
             <app-dashboard-card class="col-xxl-4 col-md-6"
               [icon]="mountainIcon"
-              title="Total elevation"
+              [title]="'total-elevation' | translate"
               text="{{(totalElevation / 1000) | number: '1.2-2'}} KM" >
               <a *ngIf="mostElevationRun" [href]="'https://www.strava.com/activities/' + mostElevationRun.stravaId"  target="_blank" rel="noreferrer noopener">
                 <span class="text-muted small pt-2 ps-1">Personal best: </span><span class="text-success small pt-1 fw-bold">{{mostElevationRun.elevation}}m</span>
@@ -31,7 +31,7 @@
 
             <app-dashboard-card class="col-xxl-4 col-md-6"
               [icon]="timeSpentIcon" iconColor="#700460" iconBackgroundColor="#e5d5e3"
-              title="Total time spent"
+              [title]="'total-time' | translate"
               text="{{totalTimeSpent | time}}" >
               <a *ngIf="longestRun" [href]="'https://www.strava.com/activities/' + longestRun.stravaId"  target="_blank" rel="noreferrer noopener">
                 <span class="text-muted small pt-2 ps-1">Longest run: </span><span class="text-success small pt-1 fw-bold">{{longestRun.movingtime | time}}</span>
@@ -40,7 +40,7 @@
 
             <app-dashboard-card class="col-xxl-4 col-md-6"
               [icon]="fastestPaceIcon" iconColor="#e5ad4b" iconBackgroundColor="#f7efe1"
-              title="Fastest pace"
+              [title]="'fastest-pace' | translate"
               text="{{fastestPace | speed}}" >
               <a *ngIf="fastestPaceRun" [href]="'https://www.strava.com/activities/' + fastestPaceRun.stravaId"  target="_blank" rel="noreferrer noopener">
                 <span class="text-muted small pt-2 ps-1">Check your run</span>
@@ -49,7 +49,7 @@
 
             <app-dashboard-card class="col-xxl-4 col-md-6"
               [icon]="thumbsUpIcon" iconColor="#FB4C02" iconBackgroundColor="#F4E5DE"
-              title="Total kudos"
+              [title]="'total-kudos' | translate"
               text="{{totalKudos | number: '1.0'}}" >
               <a *ngIf="mostKudosRun" [href]="'https://www.strava.com/activities/' + mostKudosRun.stravaId"  target="_blank" rel="noreferrer noopener">
                 <span class="text-muted small pt-2 ps-1">Most kudos: </span><span class="text-success small pt-1 fw-bold">{{mostKudosRun.kudos_count}}</span>
@@ -58,7 +58,7 @@
 
             <app-dashboard-card class="col-xxl-4 col-md-6"
               [icon]="commentsIcon" iconColor="#2CADBD" iconBackgroundColor="#dcf0f2"
-              title="Total comments"
+              [title]="'total-comments' | translate"
               text="{{totalComments}}" >
               <a *ngIf="mostCommentsRun" [href]="'https://www.strava.com/activities/' + mostCommentsRun.stravaId"  target="_blank" rel="noreferrer noopener">
                 <span class="text-muted small pt-2 ps-1">Most comments: </span><span class="text-success small pt-1 fw-bold">{{mostCommentsRun.comment_count}}</span>
@@ -69,7 +69,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Total distance by month (km)</h5>
+                  <h5 class="card-title" translate>total-distance-by-month</h5>
 
                   <div style="display: block;">
                     <canvas baseChart
@@ -88,7 +88,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Average pace by month (min / km)</h5>
+                  <h5 class="card-title" translate>average-pace-by-month</h5>
                   <div style="display: block;">
                     <canvas baseChart
                       [data]="lineChartData"
@@ -108,12 +108,12 @@
         <div class="col-lg-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Trophies</h5>
+              <h5 class="card-title" translate>trophies</h5>
               <app-trophies *ngIf="runs" [runs]="runs" > </app-trophies>
             </div>
           </div>
 
-          <app-activity-timeline title="Recent Activity" [runs]="recentRuns"></app-activity-timeline>
+          <app-activity-timeline [title]="'recent-activity' | translate" [runs]="recentRuns"></app-activity-timeline>
         </div>
         <!-- End Right side columns -->
     </div>

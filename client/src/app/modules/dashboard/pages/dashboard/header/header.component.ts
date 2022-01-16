@@ -9,6 +9,7 @@ import { delay } from 'rxjs';
 import { Page } from 'src/app/services/strava/Page';
 import { DistanceType } from 'src/app/services/strava/models/custom/enum/distance-type';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -40,7 +41,7 @@ export class HeaderComponent {
 
   public newTrophyRuns: Run[] = [];
 
-  public constructor(private authService: AuthService, private stravaService: StravaService) {
+  public constructor(private authService: AuthService, private stravaService: StravaService, private translateService: TranslateService) {
     this.athlete = authService.getAthlete();
 
     this.isLoading = true;
@@ -66,6 +67,10 @@ export class HeaderComponent {
         setTimeout(() => this.isRefreshing = false, 800);
          setTimeout(() => this.isRefreshDisabled = false, 5000);
       });
+  }
+
+  public switchLanguage(lang: string): void {
+    this.translateService.use(lang);
   }
 
   public signOut(): void {

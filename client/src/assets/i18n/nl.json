@@ -1,0 +1,14 @@
+{
+  "trophies-new": "Je hebt {{count}} nieuwe trofeeën",
+  "trophies-no-new": "Geen nieuwe trofeeën",
+  "trophies": "trofeeën",
+  "recent-activity": "Recente activiteit",
+  "total-distance": "Totale afstand",
+  "total-elevation": "Totale hoogte",
+  "total-time": "Totale duur",
+  "fastest-pace": "Hoogste snelheid",
+  "total-kudos": "Totaal aantal kudos",
+  "total-comments": "Totaal aantal reacties",
+  "total-distance-by-month": "Totale afstand per maand (KM)",
+  "average-pace-by-month": "Gemiddelde snelheid per maand (min / km)"
+}

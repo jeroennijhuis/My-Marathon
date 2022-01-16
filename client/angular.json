@@ -28,6 +28,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.png",
+              "src/assets/i18n",
+              "src/assets/i18n",
               "src/assets"
             ],
             "styles": [
