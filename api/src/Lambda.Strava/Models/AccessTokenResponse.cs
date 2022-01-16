@@ -16,5 +16,6 @@ public class AccessTokenResponse
     [JsonPropertyName("refresh_token")] 
     public string RefreshToken { get; set; }
 
-    //TODO OTHER RESPONSE PROPS
+    [JsonPropertyName("athlete")]
+    public Athlete Athlete { get; set; }
 }

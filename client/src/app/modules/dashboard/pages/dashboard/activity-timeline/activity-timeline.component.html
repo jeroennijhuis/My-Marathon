@@ -9,7 +9,7 @@
           <i *ngSwitchCase="distanceType.SemiMarathon" class='bi activity-badge text-muted align-self-start bi-trophy-fill trophy trophy_gold'></i>
           <i *ngSwitchCase="distanceType.TenKilometer" class='bi activity-badge text-muted align-self-start bi-trophy-fill trophy trophy_silver'></i>
           <i *ngSwitchCase="distanceType.FiveKilometer" class='bi activity-badge text-muted align-self-start bi-trophy-fill trophy trophy_bronze'></i>
-          <i *ngSwitchCase="distanceType.None" class='bi activity-badge text-muted align-self-start bi-circle-fill'></i>
+          <i *ngSwitchDefault class='bi activity-badge text-muted align-self-start bi-circle-fill'></i>
         </ng-container>
         <div class="activity-content">{{(run.distance / 1000) | number: '1.2-2'}} km - {{run.name}}</div>
       </div><!-- End activity item-->

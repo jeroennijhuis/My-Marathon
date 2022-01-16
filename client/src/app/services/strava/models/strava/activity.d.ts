@@ -1,5 +1,4 @@
 import { ActivityType } from "./activity-type";
-import { Athlete } from "./athlete";
 
 export interface Activity {
 
@@ -11,8 +10,6 @@ export interface Activity {
 
   // The identifier of the upload that resulted in this activity
   upload_id?: number | null;
-
-  athlete?: Athlete;
 
   // The name of the activity
   name: string;

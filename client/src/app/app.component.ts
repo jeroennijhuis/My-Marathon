@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -6,21 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   // BACKLOG
 
-  // TECHNICAL
+  /// TECHNICAL
   // DOCKER SETUP
   // PIPELINE
   // CORS SETUP API GATEWAY
 
-  // FEATURE
+  /// FEATURE
   // HEADER
-  //  - PROFILE DATA
   //  - LANGUAGE SWITCH
   //  - METRICS SWITCH
-  //  - TZ SWITCH
   //  - (?) REMOVE INVALID DATA INSTRUCTIONS
 
-  // BUG
+  /// BUG
   // MOVING BACKGROUND MOBILE
 }

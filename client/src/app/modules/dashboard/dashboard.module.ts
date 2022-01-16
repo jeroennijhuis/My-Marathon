@@ -14,6 +14,7 @@ import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgChartsModule } from 'ng2-charts';
 import { SharedModule } from '../shared/shared.module';
+import { HeaderComponent } from './pages/dashboard/header/header.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { SharedModule } from '../shared/shared.module';
     SpeedPipe,
     DashboardCardComponent,
     ActivityTimelineComponent,
-    DashboardCardComponent
+    DashboardCardComponent,
+    HeaderComponent
   ],
   providers: [
     DecimalPipe,

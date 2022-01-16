@@ -30,7 +30,7 @@ export class LoginComponent {
       this.isLoading = true;
 
       this.authService.getAccessToken(code)
-        .subscribe(_ => this.goToDashboard());
+        .subscribe(response => this.goToDashboard());
     }
   }
 

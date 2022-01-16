@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faClock, faComment, faCommentAlt, faMountain, faRoad, faRunning, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faComment, faCommentAlt, faMountain, faRoad, faRunning, faThumbsUp, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { ChartConfiguration, ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { Run } from 'src/app/services/strava/models/custom/run';
 import { StravaService } from 'src/app/services/strava/strava.service';
@@ -128,16 +128,14 @@ export class DashboardComponent  {
   };
 
   public constructor(stravaService: StravaService, demoService: DemoService) {
-    const runs$ = demoService.isEnabled()
-      ? demoService.getRuns().pipe(delay(1500))
-      : stravaService.getRuns();
-
-    runs$.subscribe((page: Page<Run>) => {
+    stravaService.runs$.subscribe((page: Page<Run>) => {
       this.runs = this.runs.concat(page.value);
       if(page.isCompleted){
         this.isLoaded = true;
       }
     });
+
+    stravaService.loadAllActivities().subscribe();
   }
 
   private updateRuns(runs: Run[]): void {

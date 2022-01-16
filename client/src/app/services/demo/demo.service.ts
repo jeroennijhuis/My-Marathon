@@ -1,3 +1,4 @@
+import { Athlete } from 'src/app/services/auth/models/athlete';
 import { Injectable } from '@angular/core';
 import { catchError, delay, map, Observable, of } from 'rxjs';
 import { Run } from '../strava/models/custom/run';
@@ -13,7 +14,7 @@ export class DemoService {
   private readonly DEMO_MODE_ENABLED = 'demo_mode_enabled';
   private readonly enabledValue: string = 'true';
 
-  isEnabled(): boolean {
+  public get isEnabled(): boolean {
     const value = sessionStorage.getItem(this.DEMO_MODE_ENABLED);
     return !!value && value === this.enabledValue;
   }
@@ -69,7 +70,7 @@ export class DemoService {
         trainer: undefined,
         total_photo_count: 0,
         start_date_local: '',
-        start_date: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay() - (index*2)).getTime()
+        start_date: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - (index*3)).getTime()
       } as Activity;
     });
 
@@ -84,6 +85,16 @@ export class DemoService {
       map(x => new Page<Run>(0, x, true))
     );
   }
+
+  public getAthlete(): Athlete{
+    return {
+      id: 0,
+      firstname: 'You',
+      lastname: '',
+      profile: ''
+    };
+  }
+
 
   private getRandom(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;

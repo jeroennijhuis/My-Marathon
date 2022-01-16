@@ -1,4 +1,4 @@
-import { Athlete } from "../../strava/models/strava/athlete";
+import { Athlete } from "./athlete";
 
 export interface AccessTokenResponse {
   access_token: string;
