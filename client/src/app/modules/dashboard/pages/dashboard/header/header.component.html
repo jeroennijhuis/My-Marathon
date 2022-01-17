@@ -24,30 +24,6 @@
         <fa-icon [icon]="refreshIcon"></fa-icon>
       </a>
 
-      <li class="nav-item dropdown pe-3">
-        <a [ngClass]="{'disabled': isLoading}" class="nav-link nav-language d-flex align-items-center pe-0" href="" data-bs-toggle="dropdown">
-          <fa-icon [icon]="flagIcon"></fa-icon>
-        </a>
-
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow language">
-          <li>
-            <a class="dropdown-item d-flex align-items-center">
-              <img (click)="switchLanguage('nl')" class="flag" src="../../../../../../assets/img/nl.svg">
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li>
-            <a (click)="switchLanguage('en')" class="dropdown-item d-flex align-items-center">
-              <img class="flag" src="../../../../../../assets/img/gb.svg">
-            </a>
-          </li>
-
-        </ul>
-      </li>
-
       <li class="nav-item dropdown">
 
         <a [ngClass]="{'disabled': isLoading}" class="nav-link nav-icon" href="" data-bs-toggle="dropdown">
@@ -67,6 +43,7 @@
               <hr class="dropdown-divider">
             </li>
             <li class="notification-item">
+
               <fa-icon class="trophy_img" [icon]="trophyIcon"
                 [ngClass]="{
                   'trophy_img_platinum': trophyRun.distanceType === distanceTypeEnum.Marathon,
@@ -87,12 +64,36 @@
 
       </li><!-- End Notification Nav -->
 
+
+      <li *ngIf="athlete" class="nav-item dropdown pe-3">
+
+        <a [ngClass]="{'disabled': isLoading}" class="nav-link nav-language d-flex align-items-center pe-0" href="" data-bs-toggle="dropdown">
+            <img *ngIf="currentLang === languages.Dutch" class="flag " src="../../../../../../assets/img/nl.svg">
+            <img *ngIf="currentLang === languages.English" class="flag " src="../../../../../../assets/img/gb.svg">
+
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow language">
+          <li *ngIf="currentLang !== languages.Dutch">
+            <a class="dropdown-item d-flex align-items-center">
+              <img (click)="switchLanguage(languages.Dutch)" class="flag" src="../../../../../../assets/img/nl.svg">
+            </a>
+          </li>
+          <li *ngIf="currentLang !== languages.English">
+            <a (click)="switchLanguage(languages.English)" class="dropdown-item d-flex align-items-center">
+              <img class="flag" src="../../../../../../assets/img/gb.svg">
+            </a>
+          </li>
+        </ul>
+      </li>
+
+
       <li *ngIf="athlete" class="nav-item dropdown pe-3">
 
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="" data-bs-toggle="dropdown">
           <img *ngIf="athlete.profile" [src]="athlete.profile" alt="Profile" class="rounded-circle">
           <img *ngIf="!athlete.profile" src="/../../../../../../assets/img/unknown_user.png" alt="Profile" class="rounded-circle">
-          <span class="d-md-block dropdown-toggle ps-2">{{athlete.firstname}}</span>
+          <span class="d-md-block ps-2">{{athlete.firstname}}</span><span class="dropdown-toggle"></span>
         </a><!-- End Profile Iamge Icon -->
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">

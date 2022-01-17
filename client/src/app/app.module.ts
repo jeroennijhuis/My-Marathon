@@ -1,3 +1,4 @@
+import { LanguageService } from './services/language/language.service';
 import { DemoService } from './services/demo/demo.service';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -36,6 +37,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     AuthService,
+    LanguageService,
     TokenService,
     DemoService,
     DecimalPipe,

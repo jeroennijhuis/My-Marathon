@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { faTrophy } from '@fortawesome/free-solid-svg-icons';
-import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from './services/language/language.service';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +8,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
 
-  public constructor(translate: TranslateService) {
-    // this language will be used as a fallback when a translation isn't found in the current language
-    translate.setDefaultLang('en');
-
-     // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use('en');
+  public constructor(languageService: LanguageService) {
+    languageService.setup();
 }
   // BACKLOG
 
@@ -26,7 +21,6 @@ export class AppComponent {
 
   /// FEATURE
   // HEADER
-  //  - LANGUAGE SWITCH
   //  - METRICS SWITCH
   //  - (?) REMOVE INVALID DATA INSTRUCTIONS
 

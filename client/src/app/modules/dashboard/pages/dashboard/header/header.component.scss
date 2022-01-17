@@ -20,6 +20,10 @@ a {
 
 }
 
+.dropdown-toggle {
+  font-size: 20px !important;
+  margin-left: 5px;
+}
 
 
 fa-icon {
@@ -30,8 +34,8 @@ fa-icon {
 }
 
 .flag {
-  width: 20px;
-  height: 15px;
+  width: 30px;
+  height: 30px;
   margin: 0 auto;
 }
 
@@ -74,6 +78,9 @@ fa-icon {
   }
 }
 
+.language {
+  min-width: 60px !important;
+}
 
 /*--------------------------------------------------------------
 # Header

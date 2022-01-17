@@ -1,15 +1,14 @@
+import { Language } from './../../../../../services/language/models/language';
 import { StravaService } from './../../../../../services/strava/strava.service';
-import { Component, OnInit } from '@angular/core';
-import { faArrowCircleUp, faFlag, faSync, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { Component } from '@angular/core';
+import { faFlag, faSync, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Athlete } from 'src/app/services/auth/models/athlete';
 import { Run } from 'src/app/services/strava/models/custom/run';
-import { DemoService } from 'src/app/services/demo/demo.service';
-import { delay } from 'rxjs';
 import { Page } from 'src/app/services/strava/Page';
 import { DistanceType } from 'src/app/services/strava/models/custom/enum/distance-type';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
   selector: 'app-header',
@@ -35,14 +34,19 @@ export class HeaderComponent {
   public isRefreshing: boolean = false;
   public isRefreshDisabled: boolean = false;
 
+  public languages = Language;
+  public currentLang: Language;
+
   public athlete: Athlete | null;
 
   private _runs: Run[] = [];
 
   public newTrophyRuns: Run[] = [];
 
-  public constructor(private authService: AuthService, private stravaService: StravaService, private translateService: TranslateService) {
+  public constructor(private authService: AuthService, private stravaService: StravaService, private languageService: LanguageService) {
     this.athlete = authService.getAthlete();
+
+    this.currentLang = languageService.getCurrentLanguage();
 
     this.isLoading = true;
     stravaService.runs$.subscribe((page: Page<Run>) => {
@@ -69,8 +73,8 @@ export class HeaderComponent {
       });
   }
 
-  public switchLanguage(lang: string): void {
-    this.translateService.use(lang);
+  public switchLanguage(lang: Language): void {
+    this.languageService.switchLanguage(lang);
   }
 
   public signOut(): void {
