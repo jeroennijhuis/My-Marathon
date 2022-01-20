@@ -1,12 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { faClock, faComment, faCommentAlt, faMountain, faRoad, faRunning, faThumbsUp, faTrophy } from '@fortawesome/free-solid-svg-icons';
-import { ChartConfiguration, ChartDataset, ChartOptions, ChartType } from 'chart.js';
+import { TranslatePipe } from '@ngx-translate/core';
+import { Language } from './../../../../services/language/models/language';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { faClock, faCommentAlt, faMountain, faRoad, faRunning, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { ChartConfiguration, ChartDataset, ChartOptions } from 'chart.js';
 import { Run } from 'src/app/services/strava/models/custom/run';
 import { StravaService } from 'src/app/services/strava/strava.service';
-import { trigger, state, style, animate, transition} from '@angular/animations';
-import { DemoService } from 'src/app/services/demo/demo.service';
-import { delay } from 'rxjs';
+import { trigger, style, animate, transition} from '@angular/animations';
 import { Page } from 'src/app/services/strava/Page';
+import { LanguageService } from 'src/app/services/language/language.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   templateUrl: './dashboard.component.html',
@@ -32,9 +34,11 @@ import { Page } from 'src/app/services/strava/Page';
     ])
   ]
 })
-export class DashboardComponent  {
+export class DashboardComponent implements OnDestroy  {
 
   private _runs: Run[] = [];
+  private _monthKeys: string[] = [];
+  private _destroy$ = new Subject<void>();
 
   @Input()
   public set runs(value: Run[]){
@@ -127,15 +131,22 @@ export class DashboardComponent  {
     labels: []
   };
 
-  public constructor(stravaService: StravaService, demoService: DemoService) {
+  public constructor(stravaService: StravaService, private languageService: LanguageService, private translatePipe: TranslatePipe) {
     stravaService.runs$.subscribe((page: Page<Run>) => {
       this.runs = this.runs.concat(page.value);
       if(page.isCompleted){
         this.isLoaded = true;
       }
+
+      languageService.onLangChange.pipe(takeUntil(this._destroy$)).subscribe(_ => this.setupChartLabels());
     });
 
     stravaService.loadAllActivities().subscribe();
+  }
+
+  public get currentLanguage(): Language
+  {
+    return this.languageService.getCurrentLanguage();
   }
 
   private updateRuns(runs: Run[]): void {
@@ -163,11 +174,10 @@ export class DashboardComponent  {
     this.totalComments = runs.reduce((sum, current) => sum + current.comment_count, 0);
 
     // Charts
-    let months=["January","February","March","April","June", "July", "August", "September", "October", "November", "December"];
+    const months =["month.january","month.february","month.march","month.april","month.june", "month.july", "month.august", "month.september", "month.october", "month.november", "month.december"];
     let currentMonth=new Date().getMonth();
-    const labels = months.slice(currentMonth-7).concat(months.slice(0,currentMonth + 1));
-    this.barChartLabels = labels;
-    this.lineChartData.labels = labels;
+    this._monthKeys = months.slice(currentMonth-7).concat(months.slice(0,currentMonth + 1));
+    this.setupChartLabels();
 
     var d = new Date();
     d.setMonth(d.getMonth() - 7);
@@ -185,5 +195,17 @@ export class DashboardComponent  {
       this.barChartData[0].data.push(totalDistance);
       this.lineChartData.datasets[0].data.push(16.6666667 / avgPace);
     }
+  }
+
+  private setupChartLabels(): void {
+    const labels = this._monthKeys.map(x => this.translatePipe.transform(x));
+
+    this.barChartLabels = labels;
+    this.lineChartData = {...this.lineChartData, labels};
+  }
+
+  public ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 }

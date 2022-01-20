@@ -3,7 +3,7 @@
     <h5 *ngIf="title" class="card-title">{{title}}</h5>
     <div class="activity">
       <div *ngFor="let run of runs" class="activity-item d-flex">
-        <div class="activite-label">{{run.endtime | dateTimeDiff}}</div>
+        <div class="activite-label">{{run.endtime | dateTimeDiff: { lang: currentLanguage} }}</div>
         <ng-container [ngSwitch]="run.distanceType">
           <i *ngSwitchCase="distanceType.Marathon" class='bi activity-badge text-muted align-self-start bi-trophy-fill trophy trophy_platinum'></i>
           <i *ngSwitchCase="distanceType.SemiMarathon" class='bi activity-badge text-muted align-self-start bi-trophy-fill trophy trophy_gold'></i>

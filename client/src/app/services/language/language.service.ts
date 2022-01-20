@@ -1,6 +1,6 @@
 import { Language } from './models/language';
-import { TranslateService } from '@ngx-translate/core';
-import { Injectable } from '@angular/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,10 @@ export class LanguageService {
   public getCurrentLanguage(): Language {
     return this.stringToLanguage(this.translateService.currentLang);
 
+  }
+
+  public get onLangChange(): EventEmitter<LangChangeEvent> {
+    return this.translateService.onLangChange;
   }
 
   private stringToLanguage(value: string): Language{

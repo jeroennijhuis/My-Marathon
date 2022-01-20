@@ -15,6 +15,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgChartsModule } from 'ng2-charts';
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './pages/dashboard/header/header.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
   imports: [

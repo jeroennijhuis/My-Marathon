@@ -73,8 +73,10 @@ export class HeaderComponent {
       });
   }
 
-  public switchLanguage(lang: Language): void {
-    this.languageService.switchLanguage(lang);
+  public switchLanguage(): void {
+    const newLang = this.currentLang === Language.Dutch ? Language.English : Language.Dutch;
+    this.languageService.switchLanguage(newLang);
+    this.currentLang = newLang;
   }
 
   public signOut(): void {

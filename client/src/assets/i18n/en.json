@@ -10,5 +10,50 @@
   "total-kudos": "Total kudos",
   "total-comments": "Total comments",
   "total-distance-by-month": "Total distance by month (KM)",
-  "average-pace-by-month": "Average pace by month (min / km)"
+  "average-pace-by-month": "Average pace by month (min / km)",
+  "personal-best": "Personal best",
+  "longest-run": "Longest run",
+  "check-your-run": "Check your run",
+  "most-comments": "Most comments",
+  "most-kudos": "Most kudos",
+  "sign-out": "Sign out",
+  "ago": "ago",
+
+  "time.second.short": "s",
+  "time.second.singular": "sec",
+  "time.second.plural": "sec",
+
+  "time.minute.short": "m",
+  "time.minute.singular": "min",
+  "time.minute.plural": "min",
+
+  "time.hour.short": "h",
+  "time.hour.singular": "hr",
+  "time.hour.plural": "hrs",
+
+  "time.day.short": "d",
+  "time.day.singular": "day",
+  "time.day.plural": "days",
+
+  "time.month.singular": "month",
+  "time.month.plural": "months",
+
+  "time.year.singular": "year",
+  "time.year.plural": "years",
+
+  "month.january": "January",
+  "month.february": "February",
+  "month.march": "March",
+  "month.april": "April",
+  "month.june": "June",
+  "month.july": "July",
+  "month.august": "August",
+  "month.september": "September",
+  "month.october": "October",
+  "month.november": "November",
+  "month.december": "December",
+
+  "my-strava-account": "My Strava account",
+  "check-out-code": "Check out the code",
+  "contact-creator": "Contact the creator"
 }

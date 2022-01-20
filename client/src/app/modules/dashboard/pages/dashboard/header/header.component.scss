@@ -25,6 +25,10 @@ a {
   margin-left: 5px;
 }
 
+.dropdown-divider.thick{
+  height: 15px;
+}
+
 
 fa-icon {
   stroke-width: 25px;
@@ -76,10 +80,6 @@ fa-icon {
       stroke-width: 5px;
     }
   }
-}
-
-.language {
-  min-width: 60px !important;
 }
 
 /*--------------------------------------------------------------

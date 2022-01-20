@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoadingComponent } from 'src/app/components/loading/loading.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -9,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ],
   declarations: [LoadingComponent],
-  exports: [LoadingComponent, TranslateModule]
+  exports: [LoadingComponent, TranslateModule, TranslatePipe],
+  providers: [TranslatePipe]
 })
 export class SharedModule { }

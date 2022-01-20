@@ -1,10 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { TimeConstants } from '../constants/time.contstants';
 
 @Pipe({
   name: 'dateTimeDiff'
 })
 export class DateTimeDiffPipe implements PipeTransform {
+
+  constructor(private translatePipe: TranslatePipe) {
+  }
 
   transform(time: any, _args?: any): any {
     if (time) {
@@ -22,13 +26,13 @@ export class DateTimeDiffPipe implements PipeTransform {
       }
 
       var formats = new Map<string[], number>();
-      formats.set(['sec', 'sec'], 1);
-      formats.set(['min', 'min'], TimeConstants.minute);
-      formats.set(['hr', 'hrs'],   TimeConstants.hour);
-      formats.set(['day', 'days'],    TimeConstants.day);
-      formats.set(['month', 'months'],  TimeConstants.month);
-      formats.set(['year', 'years'],   TimeConstants.year);
-      formats.set([''],       Number.MAX_SAFE_INTEGER);
+      formats.set(['time.second.singular',  'time.second.plural'],  1);
+      formats.set(['time.minute.singular',  'time.minute.plural'],  TimeConstants.minute);
+      formats.set(['time.hour.singular',    'time.hour.plural'],    TimeConstants.hour);
+      formats.set(['time.day.singular',     'time.day.plural'],     TimeConstants.day);
+      formats.set(['time.month.singular',   'time.month.plural'],   TimeConstants.month);
+      formats.set(['time.year.singular',    'time.year.plural'],    TimeConstants.year);
+      formats.set([''],                                             Number.MAX_SAFE_INTEGER);
 
       let diffInSeconds = (+new Date() - time) / 1000;
 
@@ -40,9 +44,9 @@ export class DateTimeDiffPipe implements PipeTransform {
 
         if(diffInSeconds < value && !!prevKey && !!prevValue){
           const count = Math.round(diffInSeconds / prevValue);
-          const unity = count < 2 ? prevKey[0] : `${prevKey[1]}`;
+          const unityKey = count < 2 ? prevKey[0] : `${prevKey[1]}`;
 
-          return `${count.toFixed()} ${unity}`;
+          return `${count.toFixed()} ${this.translatePipe.transform(unityKey)}`;
         }
 
         prevKey = key;

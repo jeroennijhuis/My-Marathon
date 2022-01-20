@@ -10,7 +10,7 @@ import { TokenService } from './services/token/token.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DecimalPipe } from '@angular/common';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -40,6 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
     LanguageService,
     TokenService,
     DemoService,
+    TranslatePipe,
     DecimalPipe,
     {
       provide: HTTP_INTERCEPTORS,

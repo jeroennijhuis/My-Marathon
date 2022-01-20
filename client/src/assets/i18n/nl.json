@@ -10,5 +10,50 @@
   "total-kudos": "Totaal aantal kudos",
   "total-comments": "Totaal aantal reacties",
   "total-distance-by-month": "Totale afstand per maand (KM)",
-  "average-pace-by-month": "Gemiddelde snelheid per maand (min / km)"
+  "average-pace-by-month": "Gemiddelde snelheid per maand (min / km)",
+  "personal-best": "Persoonlijk record",
+  "longest-run": "Langste afstand",
+  "check-your-run": "Bekijk jouw activteit",
+  "most-comments": "Meeste reacties",
+  "most-kudos": "Meeste kudo's",
+  "sign-out": "Afmelden",
+  "ago": "geleden",
+
+  "time.second.short": "s",
+  "time.second.singular": "sec",
+  "time.second.plural": "sec",
+
+  "time.minute.short": "m",
+  "time.minute.singular": "min",
+  "time.minute.plural": "min",
+
+  "time.hour.short": "u",
+  "time.hour.singular": "uur",
+  "time.hour.plural": "uur",
+
+  "time.day.short": "d",
+  "time.day.singular": "dag",
+  "time.day.plural": "dagen",
+
+  "time.month.singular": "maand",
+  "time.month.plural": "maanden",
+
+  "time.year.singular": "jaar",
+  "time.year.plural": "jaren",
+
+  "month.january": "Januari",
+  "month.february": "Februari",
+  "month.march": "Maart",
+  "month.april": "April",
+  "month.june": "Juni",
+  "month.july": "Juli",
+  "month.august": "Augustus",
+  "month.september": "September",
+  "month.october": "Oktober",
+  "month.november": "November",
+  "month.december": "December",
+
+  "my-strava-account": "Mijn Strava account",
+  "check-out-code": "Bekijk de code",
+  "contact-creator": "Neem contact op"
 }

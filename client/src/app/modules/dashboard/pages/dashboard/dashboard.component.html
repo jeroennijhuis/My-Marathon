@@ -16,7 +16,7 @@
               [title]="'total-distance' | translate"
               text="{{(totalDistance / 1000) | number: '1.2-2'}} KM" >
               <a *ngIf="mostDistanceRun" [href]="'https://www.strava.com/activities/' + mostDistanceRun.stravaId" target="_blank" rel="noreferrer noopener">
-                <span class="text-muted small pt-2 ps-1">Personal best: </span> <span class="text-success small pt-1 fw-bold">{{(mostDistanceRun.distance / 1000) | number: '1.2-2'}} KM</span>
+                <span class="text-muted small pt-2 ps-1"><span translate>personal-best</span>: </span> <span class="text-success small pt-1 fw-bold">{{(mostDistanceRun.distance / 1000) | number: '1.2-2'}} KM</span>
               </a>
             </app-dashboard-card>
 
@@ -25,16 +25,16 @@
               [title]="'total-elevation' | translate"
               text="{{(totalElevation / 1000) | number: '1.2-2'}} KM" >
               <a *ngIf="mostElevationRun" [href]="'https://www.strava.com/activities/' + mostElevationRun.stravaId"  target="_blank" rel="noreferrer noopener">
-                <span class="text-muted small pt-2 ps-1">Personal best: </span><span class="text-success small pt-1 fw-bold">{{mostElevationRun.elevation}}m</span>
+                <span class="text-muted small pt-2 ps-1"><span translate>personal-best</span>: </span><span class="text-success small pt-1 fw-bold">{{mostElevationRun.elevation}}m</span>
               </a>
             </app-dashboard-card>
 
             <app-dashboard-card class="col-xxl-4 col-md-6"
               [icon]="timeSpentIcon" iconColor="#700460" iconBackgroundColor="#e5d5e3"
               [title]="'total-time' | translate"
-              text="{{totalTimeSpent | time}}" >
+              text="{{totalTimeSpent | time: { lang: currentLanguage } }}" >
               <a *ngIf="longestRun" [href]="'https://www.strava.com/activities/' + longestRun.stravaId"  target="_blank" rel="noreferrer noopener">
-                <span class="text-muted small pt-2 ps-1">Longest run: </span><span class="text-success small pt-1 fw-bold">{{longestRun.movingtime | time}}</span>
+                <span class="text-muted small pt-2 ps-1"><span translate>longest-run</span>: </span><span class="text-success small pt-1 fw-bold">{{longestRun.movingtime | time: { lang: currentLanguage } }}</span>
               </a>
             </app-dashboard-card>
 
@@ -43,7 +43,7 @@
               [title]="'fastest-pace' | translate"
               text="{{fastestPace | speed}}" >
               <a *ngIf="fastestPaceRun" [href]="'https://www.strava.com/activities/' + fastestPaceRun.stravaId"  target="_blank" rel="noreferrer noopener">
-                <span class="text-muted small pt-2 ps-1">Check your run</span>
+                <span class="text-muted small pt-2 ps-1" translate>check-your-run</span>
               </a>
             </app-dashboard-card>
 
@@ -52,7 +52,7 @@
               [title]="'total-kudos' | translate"
               text="{{totalKudos | number: '1.0'}}" >
               <a *ngIf="mostKudosRun" [href]="'https://www.strava.com/activities/' + mostKudosRun.stravaId"  target="_blank" rel="noreferrer noopener">
-                <span class="text-muted small pt-2 ps-1">Most kudos: </span><span class="text-success small pt-1 fw-bold">{{mostKudosRun.kudos_count}}</span>
+                <span class="text-muted small pt-2 ps-1"><span translate>most-kudos</span>: </span><span class="text-success small pt-1 fw-bold">{{mostKudosRun.kudos_count}}</span>
               </a>
             </app-dashboard-card>
 
@@ -61,7 +61,7 @@
               [title]="'total-comments' | translate"
               text="{{totalComments}}" >
               <a *ngIf="mostCommentsRun" [href]="'https://www.strava.com/activities/' + mostCommentsRun.stravaId"  target="_blank" rel="noreferrer noopener">
-                <span class="text-muted small pt-2 ps-1">Most comments: </span><span class="text-success small pt-1 fw-bold">{{mostCommentsRun.comment_count}}</span>
+                <span class="text-muted small pt-2 ps-1"><span translate>most-comments</span>: </span><span class="text-success small pt-1 fw-bold">{{mostCommentsRun.comment_count}}</span>
               </a>
             </app-dashboard-card>
 
