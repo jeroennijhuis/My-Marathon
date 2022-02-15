@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  strava-db:
+    container_name: strava-db
+    build:
+      context: .
+      dockerfile: database.Dockerfile
+    environment:
+      - POSTGRES_DB=strava
+      - POSTGRES_USER=strava
+      - POSTGRES_PASSWORD=strava
+    ports:
+      - "5432:5432"
+    networks:
+      - strava-network
+      
+networks:
+  strava-network:

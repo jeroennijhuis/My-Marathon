@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Strava.API", "src\Strava.API\Strava.API.csproj", "{9E694520-06CA-4B16-8F3C-B9B323C57DC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Strava.API.Tests", "test\Strava.API.Tests\Strava.API.Tests.csproj", "{38B63965-19C0-4FB0-A4C8-FEE1B5647530}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Strava.Infrastructure", "src\Strava.Infrastructure\Strava.Infrastructure.csproj", "{662D989A-E2E4-4F1A-9578-553FCF3127A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AD7DC82F-C5E7-4297-BE57-DCFC74431808}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Strava.Domain", "Strava.Domain\Strava.Domain.csproj", "{9FAA8C6C-1088-4C93-A93C-AE8A4818A2D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strava.Application", "Strava.Application\Strava.Application.csproj", "{64553A0E-EBDC-4EBC-A970-64B0A03D8E1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{11415B2A-9A82-4583-92CD-E18D3657F8F9}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E694520-06CA-4B16-8F3C-B9B323C57DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E694520-06CA-4B16-8F3C-B9B323C57DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E694520-06CA-4B16-8F3C-B9B323C57DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E694520-06CA-4B16-8F3C-B9B323C57DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38B63965-19C0-4FB0-A4C8-FEE1B5647530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38B63965-19C0-4FB0-A4C8-FEE1B5647530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38B63965-19C0-4FB0-A4C8-FEE1B5647530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38B63965-19C0-4FB0-A4C8-FEE1B5647530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{662D989A-E2E4-4F1A-9578-553FCF3127A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{662D989A-E2E4-4F1A-9578-553FCF3127A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{662D989A-E2E4-4F1A-9578-553FCF3127A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{662D989A-E2E4-4F1A-9578-553FCF3127A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FAA8C6C-1088-4C93-A93C-AE8A4818A2D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FAA8C6C-1088-4C93-A93C-AE8A4818A2D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FAA8C6C-1088-4C93-A93C-AE8A4818A2D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FAA8C6C-1088-4C93-A93C-AE8A4818A2D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64553A0E-EBDC-4EBC-A970-64B0A03D8E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64553A0E-EBDC-4EBC-A970-64B0A03D8E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64553A0E-EBDC-4EBC-A970-64B0A03D8E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64553A0E-EBDC-4EBC-A970-64B0A03D8E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{38B63965-19C0-4FB0-A4C8-FEE1B5647530} = {AD7DC82F-C5E7-4297-BE57-DCFC74431808}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5FFA92E-5CA1-4E62-8CE2-115E906A560A}
+	EndGlobalSection
+EndGlobal
